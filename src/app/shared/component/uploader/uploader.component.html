@@ -1,5 +1,5 @@
 <div class="uploader d-flex align-items-center justify-content-center">
-  <input type="file" #file style="display: none" (change)="previewSelectedImage($event)" accept="image/jpeg, image/png">
+  <input type="file" #file class="d-none" (change)="previewSelectedImage($event)" accept="image/jpeg, image/png">
   <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()">
     @if(imageURL()){
       <img [src]="imageURL()" >
