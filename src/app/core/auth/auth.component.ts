@@ -57,7 +57,7 @@ export class AuthComponent implements OnInit {
       }),
     ).subscribe((res) => {
       this.userService.userData = res.user
-      this.router.navigate([res.new_user ? '/setting/personal-information?new_user=true' : '']).then()
+      this.router.navigate([res.new_user ? '/setting/personal-information' : ''], {queryParams: res.new_user ? {new_user: true} : {}}).then()
     });
   }
 
