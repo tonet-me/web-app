@@ -1,0 +1,19 @@
+@import "global/normalize";
+@import "global/fonts";
+@import "global/bootstrap";
+@import "global/themes";
+@import "global/buttons";
+@import "global/forms";
+@import "global/toast";
+
+body {
+  background: var(--main-background);
+}
+
+*, body, div, span, ul, li, ol, p, a, input {
+  box-sizing: border-box;
+  color: var(--text);
+  font-family: Poppins, serif;
+  font-weight: normal;
+}
+

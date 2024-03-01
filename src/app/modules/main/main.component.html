@@ -1,0 +1,17 @@
+<div class="main" *ngIf="userService.getUserData$() | async as user">
+  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center">
+    <div class="image-holder d-flex align-items-center justify-content-center me-4">
+      <app-inline-svg *ngIf="!user.profile_photo_url" src="assets/icons/user.svg"/>
+      <img *ngIf="user.profile_photo_url" [src]="user.profile_photo_url | getImageUrl" />
+    </div>
+    <div class="main__title">
+      <h2>Welcome {{user.first_name}} {{user.last_name}}</h2>
+      <h3>Welcome back</h3>
+    </div>
+  </div>
+    <div class="cursor-pointer btn-container">
+      <app-inline-svg routerLink="setting"  src="assets/icons/setting.svg" width="40px" height="40px" fill="var(--text)"/>
+    </div>
+  </div>
+</div>

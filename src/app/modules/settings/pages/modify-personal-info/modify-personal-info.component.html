@@ -1,0 +1,12 @@
+<app-breadcrumb [title]="breadCrumbData.title"
+                [description]="breadCrumbData.description"
+                [backLink]="breadCrumbData.backLink"/>
+<div class="container-fluid d-flex justify-content-center align-items-center">
+  <app-personal-form
+    [countryList]="countryList"
+    [userEmail]="userEmail"
+    [form]="form"
+    (selectedCountryChange)="onSelectedCountry($event)"
+    (onSubmit)="submit()"/>
+</div>
+

@@ -1,0 +1,39 @@
+
+.uploader {
+  .image-holder {
+    width: 200px;
+    height: 200px;
+    background: var(--primary);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    & img{
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+    & .upload-btn{
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      height: 40px;
+      width: 120px;
+      font-size: .9rem;
+      background: #fff;
+      border-radius: 32px;
+      color: #4169E1;
+      border: none;
+      cursor: pointer;
+    }
+
+    & app-inline-svg {
+      &::ng-deep {
+        & svg {
+          width: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
+          height: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
+        }
+      }
+    }
+  }
+}

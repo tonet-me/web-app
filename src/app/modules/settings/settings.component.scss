@@ -1,0 +1,9 @@
+@import "../../../assets/styles/mixins";
+.setting{
+  .image-holder{
+   @include image-holder()
+  }
+  .info-box{
+  @include info-box()
+  }
+}

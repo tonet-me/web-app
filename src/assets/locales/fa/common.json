@@ -1,0 +1,219 @@
+{
+  "labels": {
+    "phone": {
+      "Main": "اصلی",
+      "Work": "کاری",
+      "Mobile": "همراه",
+      "Home": "خانه",
+      "Fax": "فاکس"
+    },
+    "address": {
+      "Main": "اصلی",
+      "Home": "خانه",
+      "Office": "دفتر",
+      "Corporation": "شرکت"
+    }
+  },
+  "cards-list": "لیست کارت‌ها",
+  "new-card": "کارت جدید",
+  "hello": "سلام {{name}}",
+  "welcome-back": "خوش اومدی!",
+
+  "site-title": "My Tonet",
+  "soon": "بزودی",
+  "add-item": "اضافه کردن آیتم",
+  "save": "ذخیره",
+  "cancel": "لغو",
+  "back": "بازگشت",
+  "continue": "ادامه",
+  "done": "تایید",
+  "upload": "آپلود",
+  "confirm": "تایید",
+
+  "full-name": "نام کامل",
+  "email": "ایمیل",
+  "crop-image": "برش عکس",
+
+  "add-custom-label": "برچسب جدید اضافه کنید",
+
+  "first-card": "اولین کارت خود را بسازید...",
+
+  "card-image-alt": "عکس کارت شما",
+
+  "card-name-label": "نام شما یا کسب‌و‌کار شما",
+  "card-name-placeholder": "نام کارت خود را وارد کنید",
+
+  "username-label": "نام کاربری Tonet",
+  "username-placeholder": "username",
+
+  "language-label": "زبان کارت",
+
+  "title-label": "عنوان شما",
+  "title-placeholder": "عنوان کاری خود را وارد کنید",
+
+  "about-label": "درباره",
+  "about-placeholder": "درمورد خود یا کسب‌و‌کار خود بنویسید",
+
+  "select-labels": "انتخاب برچسب",
+  "search-for-labels": "جست‌و‌جوی برچسب",
+  "social-media-placeholder": "نام کاربری یا آدرس را وارد کنید",
+
+  "phone-numbers-label": "شماره ها",
+  "phone-number-placeholder": "یک شماره وارد کنید",
+  "phone-number-add": "اضافه کردن شماره",
+  "enter-phone-number": "شماره را وارد کنید",
+
+  "email-addresses-label": "ایمیل ها",
+  "email-address-placeholder": "یک ایمیل وارد کنید",
+  "email-address-add": "اضافه کردن ایمیل",
+
+  "website-label": "وب‌سایت",
+  "website-placeholder": "آدرس یک وب‌سایت را وارد کنید",
+
+  "addresses-label": "آدرس ها",
+  "address-placeholder": "آدرس کامل را وارد کنید",
+  "address-add": "اضافه کردن آدرس",
+
+  "country-label": "کشور",
+  "city-label": "استان / شهر",
+
+  "select-placeholder": "یک مورد را انتخاب کنید",
+  "select-search": "جست‌و‌جو",
+
+  "map-tip": "محل مورد نظر را پیدا کرده و بر روی آن کلیک کنید.",
+
+  "active": "فعال",
+  "inactive": "غیر‌فعال",
+  "card-activation": "فعال کردن کارت",
+  "created-at": "ساخته شده در",
+  "view-card": "مشاهده کارت",
+  "edit-card": "ویرایش کارت",
+  "delete-card": "حذف کارت",
+  "delete-card-modal-title": "آیا مطمئن هستید؟",
+  "delete-card-modal-description": "لطفا قبل از تایید مطمئن شوید. با ادامه دادن این کارت و تمام اطلاعات مربوط به آن برای همیشه پاک می‌شوند.",
+
+  "edit-card-title": "ویرایش کارت",
+  "edit-card-description": "در این‌جا می‌توانید کارت خود را مشاهده و ویرایش کنید.",
+
+  "basic-information": "اطلاعات پایه",
+  "basic-information-description": "اطلاعات پایه کارت را وارد کنید.",
+  "basic-information-edit": "ویرایش اطلاعات پایه",
+
+  "business-information": "اطلاعات کارت",
+  "business-information-description": "اطلاعات کارت را وارد کنید.",
+  "business-information-edit": "ویرایش اطلاعات کارت",
+  "card-language": "زبان کارت",
+  "card-name": "نام کارت",
+  "tiny-url": "لینک کوتاه",
+  "title": "عنوان",
+  "empty-title": "بدون عنوان",
+  "about": "متن درباره",
+  "empty-about": "بدون متن درباره",
+
+  "contact-information": "اطلاعات تماس",
+  "contact-information-description": "اطلاعات تماس کارت را وارد کنید.",
+  "contact-information-edit": "ویرایش اطلاعات تماس",
+  "phone-numbers": "شماره‌های تماس",
+  "empty-phone-numbers": "شماره تماسی یافت نشد.",
+  "email-addresses": "ایمیل ها",
+  "empty-email-addresses": "ایمیلی یافت نشد.",
+  "website": "وب‌سایت",
+  "empty-website": "وب‌سایتی یافت نشد.",
+  "addresses": "آدرس ها",
+  "empty-addresses": "آدرسی یافت نشد.",
+
+  "social-media": "شبکه‌های اجتماعی",
+  "social-media-description": "اطلاعات شبکه‌های اجتماعی کارت را وارد کنید.",
+  "social-media-edit": "ویرایش شبکه‌های اجتماعی",
+  "empty-social-media": "شبکه‌ اجتماعی ای یافت نشد.",
+
+  "show-card": "کارت را نشانم بده",
+  "card-created-title": "تمام!",
+  "card-created-description": "کارت شما آماده استفاده است.",
+  "copy-link": "کپی لینک کارت",
+  "back-to-dashboard": "بازگشت به داشبورد",
+
+  "settings": "تنظیمات",
+  "settings-description": "در این صفحه می‌توانید تنظیمات حساب خود را مشاهده و ویرایش کنید.",
+
+  "change-password-title": "تغییر رمز عبور",
+  "change-password-description": "می‌توانید اینجا رمز عبور خود را عوض کنید.",
+
+  "old-password": "رمز عبور قدیمی",
+  "new-password": "رمز عبور جدید",
+  "repeat-new-password": "تکرار رمز عبور جدید",
+
+  "dark-mode": "حالت تیره",
+
+  "change-photo": "تغییر عکس",
+
+  "personal-information": "اطلاعات خصوصی",
+  "personal-information-edit": "ویرایش پروفایل",
+  "your-full-name": "نام کامل شما",
+  "your-phone-number": "شماره شما",
+  "your-email": "ایمیل شما",
+  "your-password": "رمز شما",
+  "repeated-password": "تکرار رمز",
+
+  "account-settings": "تنظیمات حساب",
+  "change-password": "تغییر رمز عبور",
+  "logout": "خروج از حساب",
+
+  "oauth-title": "شروع به استفاده از تونت کنید",
+  "oauth-description": "یکی از روش های زیر را انتخاب کنید تا ادامه دهیم.",
+
+  "oauth-google": "ادامه با حساب گوگل",
+  "oauth-facebook": "ادامه با حساب فیس‌بوک",
+  "oauth-appleid": "ادامه با حساب اپل آیدی",
+
+  "or-oauth-login": "یا از روش های زیر استفاده کنید",
+  "or-oauth-signup": "یا از روش های زیر استفاده کنید",
+
+  "login-title": "ورود به حساب",
+  "login-description": "اطلاعات ورود را وارد کنید تا شما را وارد داشبورد کنیم.",
+
+  "signup-title": "ثبت‌نام با ایمیل",
+  "signup-description": "ایمیل خود را وارد کنید و رمزی انتخاب کنید تا شروع کنیم.",
+
+  "verify-email-title": "ایمیل خود را تایید کنید",
+  "verify-email-description": "یک کد برای {{email}} ارسال کرده‌ایم،‌ لطفا ایمیل خود  را چک کنید و کد را اینجا وارد کنید. اگر ایمیل ارسالی را پیدا نکردید، بخش اسپم را چک کنید.",
+
+  "traditional-auth": "ادامه با ایمیل و رمز عبور",
+
+  "login": "ورود",
+  "signup": "ثبت نام",
+
+  "complete-profile-title": "تکمیل اطلاعات",
+  "complete-profile-description": "اطلاعات پایین را کامل کنید تا حساب شما تکمیل شود. بعدا می‌توانید آن‌ها را عوض کنید.",
+
+  "upload-avatar": "آپلود عکس",
+  "delete-avatar": "حذف عکس",
+
+  "resend-code": "ارسال دوباره کد",
+
+  "site-settings": "تنظیمات سایت",
+  "site-language": "زبان سایت",
+
+  "fa": "فارسی",
+  "en": "انگلیسی (English)",
+
+  "card-deleted": "کارت با موفقیت حذف شد",
+  "card-activated": "کارت فعال شد",
+  "card-deactivated": "کارت غیر‌فعال شد",
+  "successfully-updated": "با موفقیت بروزرسانی شد",
+  "upload-failed": "آپلود موفق نبود",
+  "url-copied": "لینک کپی شد",
+  "email-already-exists": "این ایمیل در حال حاضر وجود دارد",
+  "welcome": "خوش آمدید!",
+
+  "forgot-your-password": "رمز خود رافراموش کرده‌اید؟",
+  "reset-password-title": "بازیابی رمز عبور",
+  "reset-password-description": "در اینجا می‌توانید با استفاده از ایمیل خود، رمز عبور حساب‌تان را عوض کنید",
+
+  "reset-password-2-title": "ایمیل خود را تایید کنید",
+  "reset-password-2-description": "ما یک کد برای شما ایمیل کردیم. لطفا کد ارسال شده و رمز جدید خود را وارد کنید. اگر ایمیل را پیدا نکردید، بخش اسپم را چک کنید.",
+
+  "reset-code-placeholder": "کد ارسالی",
+  "reset-password-placeholder": "رمز جدید شما",
+  "reset-password-success": "رمز عبور بازنشانی شد، می‌توانید وارد حساب خود شوید."
+}

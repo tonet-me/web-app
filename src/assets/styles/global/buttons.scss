@@ -1,0 +1,82 @@
+
+
+.btn {
+  width: fit-content;
+  min-width: 160px;
+  height: 48px;
+  background: transparent;
+  outline: none !important;
+  border-radius: 16px !important;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1em;
+  line-height: calc(48px - 1rem);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  & app-inline-svg {
+    margin-right: 8px;
+  }
+
+  @media only screen and (max-width: 450px) {
+    min-width: 135px;
+    font-size: .8rem;
+    padding: .25rem .5rem;
+
+    & app-inline-svg {
+      margin-left: 6px;
+    }
+  }
+}
+
+.btn-full{
+  width: 100%;
+}
+
+
+.btn-success {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--white) !important;
+
+  &:hover {
+    background-color: var(--sucess-dark);
+    border-color: var(--sucess-dark);
+  }
+
+  &:disabled {
+    background: var(--sucess-light) !important;
+    border-color: var(--sucess-light);
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+
+.btn-danger {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: #fff !important;
+
+  &:hover {
+    background-color: var(--danger-dark);
+    border-color: var(--danger-dark);
+  }
+
+  }
+
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff !important;
+
+  &:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+}

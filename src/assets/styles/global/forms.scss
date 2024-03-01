@@ -1,0 +1,123 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  label {
+    font-size: 1rem;
+    padding-bottom: 12px;
+    white-space: nowrap;
+    color: var(--text);
+
+    &.required-flag {
+      &:after {
+        content: "*";
+        margin: 4px 0 0 3px;
+        position: absolute;
+      }
+    }
+  }
+
+  & .error {
+    margin-top: 4px;
+    color: var(--danger);
+    position: absolute;
+    bottom: -18px;
+    font-size: 0.8rem;
+    left: 0;
+    display: none;
+  }
+
+  & .icon {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+  }
+
+
+  & input,
+  & textarea {
+    border: none;
+    min-width: 150px;
+    max-height: 45px;
+    min-height: 45px;
+    font-size: clamp(0.875rem, 0.8162rem + 0.2941vw, 1rem);
+    padding: 12px;
+    color: var(--text);
+    background: var(--main-background);
+    border-radius: 12px;
+
+    &:focus {
+      outline: 1px solid var(--text-secondary);
+    }
+
+    //&.ng-touch.ng-invalid{
+    //  outline: 1px solid var(--danger);
+    //}
+    &.ng-invalid.ng-dirty,
+    &.ng-invalid.ng-touched {
+      outline: 1px solid var(--danger);
+
+      & + .error {
+        display: block;
+      }
+    }
+
+    &:disabled {
+      background: var(--main-background-darker);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+  }
+
+  & textarea::placeholder {
+    color: var(--text-secondary);
+  }
+
+  & input::placeholder {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+
+
+  .ng-select {
+    & .ng-select-container {
+      height: 45px;
+      background: var(--main-background);
+      border-radius: 12px;
+      border: none !important;
+      box-shadow: none !important;
+      font-size: clamp(0.875rem, 0.8162rem + 0.2941vw, 1rem);
+    }
+
+    & .ng-dropdown-panel {
+      background: var(--main-background);
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+      border: none
+    }
+
+    & .ng-dropdown-panel-items {
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .ng-option {
+      background: var(--main-background);
+      height: 45px;
+      display: flex !important;
+      align-items: center !important;
+
+      &.ng-option-marked {
+        background: var(--main-background-darker);
+        opacity: .7;
+      }
+
+      &.ng-option-selected {
+        background: var(--main-background) !important;
+      }
+    }
+  }
+}

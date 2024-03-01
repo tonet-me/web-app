@@ -1,0 +1,14 @@
+<div class="uploader d-flex align-items-center justify-content-center">
+  <input type="file" #file style="display: none" (change)="previewSelectedImage($event)" accept="image/jpeg, image/png">
+  <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()">
+    @if(imageURL()){
+      <img [src]="imageURL()" >
+    }@else{
+    <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px" />
+  }
+    <button class="upload-btn d-flex align-items-center justify-content-center">
+      <app-inline-svg src="assets/icons/document-upload.svg" class="me-1" width="20px" height="20px" fill="#4169E1"  />
+      upload
+    </button>
+  </div>
+</div>

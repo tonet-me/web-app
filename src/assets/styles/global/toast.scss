@@ -1,0 +1,24 @@
+.toast-container .ngx-toastr{
+  box-shadow: none !important;
+  border-radius: 10px !important;
+}
+.toast-message{
+  color: #fff !important;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.toast{
+  &-error{
+    background-color: var(--danger) !important;
+  }
+  &-sucess{
+    background-color: var(--success) !important;
+  }
+  &-info{
+    background-color: var(--info) !important;
+  }
+  &-warning{
+    background-color: var(--warning) !important;
+  }
+}

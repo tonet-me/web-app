@@ -1,0 +1,67 @@
+<form class=" pt-4" [formGroup]="form">
+  <div class="row">
+    <div class="col-12">
+      <app-uploader
+        [imageUrl]="form.controls['profile_photo_url'].value | getImageUrl"
+        (imageUrlChange)="form.controls['profile_photo_url'].patchValue($event)"
+      />
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field ">
+        <label class="required-flag">First name</label>
+        <input type="text" formControlName="first_name" placeholder="Enter your first name">
+        <small class="error">{{ form.controls["first_name"]["errorMessage"] }}</small>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <label class="required-flag">Last name</label>
+        <input type="text" formControlName="last_name" placeholder="Enter your last name">
+        <small class="error">{{ form.controls["last_name"]["errorMessage"] }}</small>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+
+      </div>
+      <div class="form-field">
+        <label>Phone number</label>
+        <div class="d-flex flex-wrap" formGroupName="phone_number" >
+          <ng-select class="col-auto me-2"
+                     [clearable]="false"
+                     formControlName="country_code"
+                     (change)="onSelectedCountry($event)"
+                     [searchable]="true">
+            @for (item of countryList; track item.code) {
+              <ng-option [value]="item.code">
+                <div class="d-flex align-items-center justify-content-center">
+                  <i class="me-2" style="font-size: 25px">{{ item.icon }}</i>
+                  {{ item.dial_code }}
+                </div>
+              </ng-option>
+            }
+          </ng-select>
+          <div class="form-field flex-1">
+            <input type="tel" formControlName="number" placeholder="Enter your phone number" inputmode="numeric">
+            <small class="error">{{ form.controls['phone_number'].controls["number"]["errorMessage"] }}</small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" [value]="userEmail" placeholder="Enter your phone number" [disabled]="true">
+        <app-inline-svg class="icon"
+                        src="assets/icons/tick-circle.svg"
+                        fill="var(--success)"
+                        width="35px"
+                        height="35px"/>
+      </div>
+    </div>
+    <div class="col-12 pt-5 pb-2">
+      <app-button (click)="submit()" type="submit" setClass="btn btn-full btn-primary">submit</app-button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,50 @@
+<div class="setting" *ngIf="userService.getUserData$() | async as userData">
+  <app-breadcrumb title="settings" description="in this page you can edit your personal information" backLink="/"/>
+  <div class="d-flex justify-content-between align-items-center py-3">
+    <div class="image-holder d-flex align-items-center justify-content-center">
+      <app-inline-svg *ngIf="!userData.profile_photo_url" src="assets/icons/user.svg"/>
+      <img *ngIf="userData.profile_photo_url" [src]="userData.profile_photo_url | getImageUrl"/>
+    </div>
+    <app-switch label="Dark Mode" (statusChange)="handleTheme()" [status]="isDarkMode"/>
+  </div>
+
+  <div class="info-box">
+    <div class="title">Personal Information</div>
+    <button class="action-btn" routerLink="personal-information">
+      <app-inline-svg src="assets/icons/edit.svg"/>
+      <span>Edit Profile</span>
+    </button>
+    <div class="row">
+      <div class="col-md-6 col-12 field" *ngIf="userData.first_name || userData.last_name">
+        <div class="key">Full Name</div>
+        <div class="value d-flex align-items-center">
+          <app-inline-svg src="assets/icons/user.svg" class="me-2" fill="var(--text-secondary)"/>
+          {{ userData.first_name }} {{ userData.last_name }}
+        </div>
+      </div>
+      <div class="col-md-6 col-12 field">
+        <div class="key">Email</div>
+        <div class="value d-flex align-items-center">
+          <app-inline-svg src="assets/icons/sms.svg" class="me-2" fill="var(--text-secondary)"/>
+          {{ userData.email }}
+        </div>
+      </div>
+      <div class="col-md-6 col-12 field" *ngIf="userData.phone_number && userData.phone_number.number">
+        <div class="key">Phone Number</div>
+        <div class="value d-flex align-items-center">
+          <app-inline-svg src="assets/icons/call.svg" class="me-2" fill="var(--text-secondary)"/>
+          {{ userData.phone_number.prefix.concat(userData.phone_number.number) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="title">Account Setting</div>
+    <div class="p-2 ">
+      <app-button setClass="btn btn-danger" (click)="logout()">Logout</app-button>
+    </div>
+  </div>
+
+</div>
+

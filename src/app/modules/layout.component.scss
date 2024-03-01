@@ -1,0 +1,8 @@
+
+.layout{
+  border-radius: 2rem 2rem 0 0;
+  background: var(--main-container);
+  padding: clamp(1rem, 0.636rem + 1.82vw, 2rem);
+  max-width: 800px;
+  min-height: calc(100vh - 109px);
+}

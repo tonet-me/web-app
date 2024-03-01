@@ -1,0 +1,55 @@
+@import "../palet";
+
+@mixin light-theme {
+  --main-background: #{$background-body-light};
+  --main-background-darker: #f4f4f4;
+  --main-container: #{$background-card-light};
+  --text: #{$text-light};
+  --text-secondary:  #626d7d;
+  --primary: #2C51BF;
+  --primary-dark: #223a87;
+  --danger: #d14747;
+  --danger-dark: #a93232;
+  --success: #6cc538;
+  --warning: #d7b426;
+  --info: #2f7fa0
+}
+
+@mixin dark-theme {
+  --main-background: #{$background-body-dark};
+  --main-background-darker: #1c212d;
+  --main-container: #{$background-card-dark};
+  --text: #{$text-dark};
+  --text-secondary: #9ca3af;
+  --primary: #3531c6;
+  --primary-dark: #221eb0;
+  --danger: #e63c3c;
+  --danger-dark: #b02e2e;
+  --success: #1be15b;
+  --warning: #aba53b;
+  --info: #3698c7
+}
+
+[color-scheme="dark"] {
+  @include dark-theme;
+}
+
+[color-scheme="light"] {
+  @include light-theme;
+}
+
+// OS Default.
+:root:not(.light):not(.dark) {
+  @media (prefers-color-scheme: light) {
+    @include light-theme;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-theme;
+  }
+}
+
+
+
+
+

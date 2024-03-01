@@ -1,0 +1,9 @@
+<div class="breadcrumb pb-2">
+  <div class="d-flex align-items-center">
+    <app-inline-svg *ngIf="backLink" class="pe-2" src="assets/icons/arrow-left.svg" (click)="navigateBackLink()"
+                    fill="var(--text)" width="35px" height="35px"/>
+    <h3 class="my-1">{{ title }}</h3>
+  </div>
+  <p class="m-1">{{ description }}</p>
+</div>
+

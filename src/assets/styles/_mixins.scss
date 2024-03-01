@@ -1,0 +1,86 @@
+@mixin info-box {
+  border-radius: 1rem;
+  border: 1px solid var(--text-secondary);
+  min-height: 80px;
+  position: relative;
+  margin: 32px 0;
+  padding: 20px;
+  & .title {
+    position: absolute;
+    background: var(--main-container);
+    padding: 0 8px;
+    left: 24px;
+    top: -11px;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  & .action-btn {
+    @media only screen and (max-width: 450px) {
+      width: 60px;
+      & span {
+        display: none;
+      }
+      & app-inline-svg {
+        margin-right: 0 !important;
+      }
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 25px;
+    background: var(--primary);
+    width: 160px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+
+    & span {
+      color: #fff;
+    }
+
+    & app-inline-svg {
+      margin-right: 6px;
+
+      &::ng-deep {
+        & svg path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+  .field {
+    padding: 16px 32px;
+
+    & .key {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    & .value {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+@mixin image-holder {
+  width: clamp(5rem, 3.409rem + 7.95vw, 9.375rem);
+  height: clamp(5rem, 3.409rem + 7.95vw, 9.375rem);
+  background: var(--primary);
+  border-radius: 50px;
+  & app-inline-svg {
+    &::ng-deep {
+      & svg {
+        width: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
+        height: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
+      }
+    }
+  }
+  & img {
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+  }
+}
