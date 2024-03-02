@@ -1,0 +1,13 @@
+footer {
+  position: absolute;
+  padding: 6px 12px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font-size: .75rem;
+
+  & span {
+    color: var(--text-secondary);
+    font-weight: lighter;
+  }
+}
