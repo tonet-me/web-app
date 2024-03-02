@@ -1,14 +1,35 @@
 <div class="uploader d-flex align-items-center justify-content-center">
-  <input type="file" #file class="d-none" (change)="previewSelectedImage($event)" accept="image/jpeg, image/png">
+  <input type="file" #file class="d-none" (change)="_imageChangedEvent = $event; this._croppedImage = $event"
+         accept="image/jpeg, image/png">
   <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()">
-    @if(imageURL()){
-      <img [src]="imageURL()" >
-    }@else{
-    <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px" />
-  }
+    @if (imageURL()) {
+      <img [src]="imageURL()">
+    } @else {
+      <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px"/>
+    }
     <button class="upload-btn d-flex align-items-center justify-content-center">
-      <app-inline-svg src="assets/icons/document-upload.svg" class="me-1" width="20px" height="20px" fill="#4169E1"  />
+      <app-inline-svg src="assets/icons/document-upload.svg" class="me-1" width="20px" height="20px" fill="#4169E1"/>
       upload
     </button>
+
+
   </div>
 </div>
+
+
+<app-modal [(showModal)]="_imageChangedEvent" [closeable]="false" heightSize="40">
+  <image-cropper
+    [imageChangedEvent]="_imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="3 / 3"
+    backgroundColor="#333"
+    [roundCropper]="true"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+  />
+
+  <div class="d-flex flex-row-reverse pt-4">
+    <button class="btn btn-primary flex-1" (click)="previewSelectedImage()">upload</button>
+    <button class="btn flex-1" (click)="_imageChangedEvent = null">cancel</button>
+  </div>
+</app-modal>

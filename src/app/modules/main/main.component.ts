@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "@shared/services/user.service";
-import {environment} from "@environments/environment";
-import {UploaderService} from "@shared/services/uploader.service";
 
 @Component({
   selector: 'app-main',

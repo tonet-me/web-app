@@ -1,7 +1,6 @@
 .form-field {
   display: flex;
   flex-direction: column;
-  position: relative;
 
   label {
     font-size: 1rem;
@@ -18,20 +17,32 @@
     }
   }
 
+  & .input-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
   & .error {
-    margin-top: 4px;
     color: var(--danger);
     position: absolute;
     bottom: -18px;
     font-size: 0.8rem;
     left: 0;
-    display: none;
   }
 
   & .icon {
     position: absolute;
-    right: 10px;
-    top: 35px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    width: 40px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    height: 45px;
+    align-items: center;
   }
 
 
@@ -58,9 +69,6 @@
     &.ng-invalid.ng-touched {
       outline: 1px solid var(--danger);
 
-      & + .error {
-        display: block;
-      }
     }
 
     &:disabled {
@@ -121,6 +129,7 @@
     }
   }
 }
-app-button{
+
+app-button {
   width: inherit;
 }

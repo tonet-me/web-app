@@ -12,7 +12,9 @@
   --danger-dark: #a93232;
   --success: #6cc538;
   --warning: #d7b426;
-  --info: #2f7fa0
+  --info: #2f7fa0;
+  --cropper-outline-color: #{$background-body-light};
+  --cropper-overlay-color: #{$background-card-light};
 }
 
 @mixin dark-theme {
@@ -27,8 +29,11 @@
   --danger-dark: #b02e2e;
   --success: #1be15b;
   --warning: #aba53b;
-  --info: #3698c7
+  --info: #3698c7;
+  --cropper-outline-color: #{$background-body-dark};
+  --cropper-overlay-color: #{$background-card-light};
 }
+
 
 [color-scheme="dark"] {
   @include dark-theme;

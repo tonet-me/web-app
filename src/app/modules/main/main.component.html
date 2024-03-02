@@ -6,7 +6,7 @@
       <img *ngIf="user.profile_photo_url" [src]="user.profile_photo_url | getImageUrl" />
     </div>
     <div class="main__title">
-      <h2>Welcome {{user.first_name}} {{user.last_name}}</h2>
+      <h2>{{user.first_name |titlecase}} {{user.last_name |titlecase}}</h2>
       <h3>Welcome back</h3>
     </div>
   </div>

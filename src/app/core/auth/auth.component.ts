@@ -35,6 +35,8 @@ export class AuthComponent implements OnInit {
     this.authService.SocialAuth$.pipe(
       takeUntilDestroyed(this.destroyRef),
       mergeMap((socialUser) => {
+        console.log(socialUser.idToken)
+        debugger
         return this.authService.login({
           provider_id: SocialProviderEnum.Google,
           token: socialUser.idToken

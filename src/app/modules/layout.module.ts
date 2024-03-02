@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {LayoutComponent} from "./layout.component";
 import {LayoutRoutingModule} from "./layout-routing.module";
+import {HeaderComponent} from "@shared/component/layout/header/header.component";
+import {FooterComponent} from "@shared/component/layout/footer/footer.component";
 
 
 
@@ -10,7 +12,9 @@ import {LayoutRoutingModule} from "./layout-routing.module";
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    HeaderComponent,
+    FooterComponent
 
   ]
 })

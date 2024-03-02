@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {countryModel} from "@app/modules/settings/models/setting.model";
+import {DomSanitizer} from "@angular/platform-browser";
+import {ImageCroppedEvent, LoadedImage} from "ngx-image-cropper";
 
 @Component({
   selector: 'app-personal-form',
@@ -14,9 +16,6 @@ export class PersonalFormComponent implements OnInit {
   @Output() selectedCountryChange: EventEmitter<string> = new EventEmitter();
   @Output() onSubmit: EventEmitter<null> = new EventEmitter()
   @Output() onClose: EventEmitter<null> = new EventEmitter()
-
-  constructor() {
-  }
 
   ngOnInit() {
   }

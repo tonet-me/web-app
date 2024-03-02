@@ -16,7 +16,7 @@ export class phoneNumber {
 }
 
 export class PersonalInfoForm {
-  constructor(values: UserModel) {
+  constructor(values?: UserModel) {
     if (values) {
       this.first_name = values.first_name
       this.last_name = values.last_name
