@@ -12,7 +12,6 @@ export const jwtRefreshInterceptor: HttpInterceptorFn = (req, next) => {
           if (!isRefreshing) {
             isRefreshing = true;
             // Token expired; attempt to refresh it
-            if (authService.isAuthenticated()) {
               return authService.getNewToken().pipe(
                 switchMap((res) => {
                   isRefreshing = false;
@@ -31,7 +30,6 @@ export const jwtRefreshInterceptor: HttpInterceptorFn = (req, next) => {
                 })
               );
             }
-          }
         }
         return throwError(() => error);
       }

@@ -1,7 +1,7 @@
 import {
   AfterViewInit, ChangeDetectorRef,
   Directive,
-  ElementRef,
+  ElementRef, Input,
   OnDestroy,
   Renderer2
 } from '@angular/core';
@@ -13,7 +13,8 @@ import {Subscription} from "rxjs";
   standalone: true
 })
 export class InputDirective implements OnDestroy, AfterViewInit {
-
+  @Input() showError?: boolean = true;
+  @Input() showClearIcon?: boolean = true;
   subscription!: Subscription
   stateError!: string;
 
@@ -24,26 +25,28 @@ export class InputDirective implements OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const formFiledElement = this.renderer.selectRootElement(this.el.nativeElement).offsetParent
-    const value = this.control.value
-    if (value) {
-      this._showIcon(formFiledElement)
-    } else {
-      this._removeIcon(formFiledElement)
-    }
-    this.subscription = this.control.statusChanges!.subscribe((status) => {
-      const value = this.control.value
-      if (value) {
-        this._showIcon(formFiledElement)
-      } else {
-        this._removeIcon(formFiledElement)
-      }
-      if (status === 'INVALID') {
-        this._showError(formFiledElement)
-      } else {
-        this._removeError(formFiledElement)
-      }
+    const formFiledElement = this.renderer.selectRootElement(this.el.nativeElement).parentElement
+    this._updateFormField(formFiledElement, false)
+    this.subscription = this.control.control!.statusChanges.subscribe((status) => {
+      this._updateFormField(formFiledElement)
     });
+  }
+
+
+  private _updateFormField(formFieldElement: HTMLElement, firstInit = true): void {
+    const value = this.control.value;
+    if (value && this.showClearIcon) {
+      this._showIcon(formFieldElement);
+    } else {
+      this._removeIcon(formFieldElement);
+    }
+    if (firstInit){
+    if (this.control.invalid && this.showError) {
+      this._showError(formFieldElement);
+    } else {
+      this._removeError(formFieldElement);
+    }
+    }
   }
 
   private _showError(formFiledElement: HTMLElement) {
@@ -75,7 +78,6 @@ export class InputDirective implements OnDestroy, AfterViewInit {
       this.control.control?.patchValue('')
       this.control.control?.markAsTouched()
       this.cdr.markForCheck()
-
     })
     if (this.renderer.selectRootElement(this.el.nativeElement).offsetParent?.firstChild.localName !== 'i') {
       this.renderer.insertBefore(formFiledElement, iconElement, formFiledElement.firstChild);

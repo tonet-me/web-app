@@ -1,4 +1,4 @@
-import {UserStatusEnum} from "@shared/enums/user-status";
+import {UserStatusEnum} from "@shared/enums/user-status.enum";
 import {phoneNumber} from "@app/modules/settings/models/setting.model";
 
 export interface UserModel {

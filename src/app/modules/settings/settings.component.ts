@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ColorSchemeService} from "@shared/services/color-scheme.service";
 import {AuthService} from "@core/auth/services/auth.service";
 import {UserService} from "@shared/services/user.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings',

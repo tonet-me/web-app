@@ -1,0 +1,55 @@
+@import "../../../assets/styles/mixins";
+
+.info-box {
+  @include info-box()
+}
+
+.social-media {
+  & img {
+    width: 100%;
+    filter: brightness(80%);
+    max-width: 80px;
+    min-width: 60px;
+  }
+
+  &:hover {
+    & img {
+      filter: brightness(100%);
+    }
+  }
+
+}
+
+.box-container {
+  background: var(--main-background);
+  border-radius: 10px;
+  min-height: 50px;
+
+  & app-inline-svg {
+    height: 22px;
+  }
+
+  & span {
+    font-size: clamp(.8rem, 0.8235rem + 0.8824vw, 1rem);
+  }
+
+  &__title {
+    font-weight: lighter;
+    font-size: clamp(.8rem, 0.8235rem + 0.8824vw, 1rem);
+    color: var(--primary-light);
+  }
+}
+
+qrcode::ng-deep .qrcode {
+
+  & canvas {
+    border-radius: 16px !important;
+  }
+}
+
+
+.empty-text{
+  font-size: clamp(0.9rem, 0.7059rem + 0.4706vw, 1rem);
+  text-align: center;
+  line-height: 1.5;
+}

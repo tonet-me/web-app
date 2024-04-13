@@ -1,0 +1,13 @@
+<app-modal [showModal]="showModal" heightSize="30" size="sm"
+           (showModalChange)="showModalChange.emit(showModal = !showModal)">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <app-inline-svg class="pb-3" [src]="icon" [width]="iconSize" [height]="iconSize" fill="var(--text)"/>
+    <h3 class="title px-2">{{ title }}</h3>
+    <div class="d-flex flex-row-reverse pt-4 btn-row">
+      <button class="btn flex-1" [class]="isDelete ? 'btn-danger': 'btn-primary'"
+              (click)="onConfirm.emit()">{{ confirmationText }}
+      </button>
+      <button class="btn btn-background flex-1 me-2" (click)="showModalChange.emit(false)">{{ cancellationText }}</button>
+    </div>
+  </div>
+</app-modal>

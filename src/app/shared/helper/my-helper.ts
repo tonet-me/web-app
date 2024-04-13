@@ -8,20 +8,6 @@ export function markFormGroupTouched(formGroup: FormGroup) {
   });
 }
 
-export function getCountryCode(phoneNumber: string) {
-  // Regular expression to match the country code
-  var countryCodeRegex = /^\+(\d{1,3})/;
-  // Match the country code
-  var match = phoneNumber.match(countryCodeRegex);
-  // If a match is found, return the country code
-  if (match && match[1]) {
-    return match[1];
-  } else {
-    // If no country code is found, return null or handle the case accordingly
-    return null;
-  }
-}
-
 export function setFormConfig() {
   ReactiveFormConfig.set({
     "internationalization": {

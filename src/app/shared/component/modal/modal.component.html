@@ -1,15 +1,9 @@
 <div *ngIf="showModal">
-  <div class="overlay" (click)="closeable && close()">
+  <div class="overlay d-flex justify-content-center align-items-center" (click)="closeable && close()">
     <div
       class="modal-container"
       [ngClass]="[size]"
-      [style.min-height]="heightSize + 'vh'"
-    >
-      <div class="header">
-        <div class="close-btn" (click)="close()">
-          &#x2715;
-        </div>
-      </div>
+      [style.min-height]="heightSize + 'vh'">
       <ng-content></ng-content>
     </div>
   </div>

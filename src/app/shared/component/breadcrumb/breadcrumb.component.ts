@@ -24,10 +24,12 @@ export class BreadcrumbComponent {
   }
 
   navigateBackLink() {
+    if (this.backLink == 'defaultBrowser') {
+      this.location.back()
+      return
+    }
     if (this.backLink) {
       this.router.navigate([this.backLink]).then()
-    } else if (this.backLink == 'back') {
-      this.location.back()
     }
   }
 }

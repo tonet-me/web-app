@@ -40,7 +40,6 @@ export class PersonalInfoForm {
 
   @prop()
   profile_photo_url!: string;
-
 }
 
 

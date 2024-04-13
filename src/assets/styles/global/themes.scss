@@ -2,19 +2,23 @@
 
 @mixin light-theme {
   --main-background: #{$background-body-light};
-  --main-background-darker: #f4f4f4;
+  --main-background-darker: #dfdfdf;
   --main-container: #{$background-card-light};
   --text: #{$text-light};
-  --text-secondary:  #626d7d;
+  --text-secondary: #6c7a89;
   --primary: #2C51BF;
-  --primary-dark: #223a87;
+  --primary-light: #5271d3;
+  --primary-dark: #193074;
+  --primary-dark-bc: #b9c7ff;
   --danger: #d14747;
   --danger-dark: #a93232;
-  --success: #6cc538;
+  --success: #427f2e;
+  --success-dark: #2e6d1c;
   --warning: #d7b426;
   --info: #2f7fa0;
   --cropper-outline-color: #{$background-body-light};
   --cropper-overlay-color: #{$background-card-light};
+  --gray: #5d5d5d;
 }
 
 @mixin dark-theme {
@@ -23,8 +27,10 @@
   --main-container: #{$background-card-dark};
   --text: #{$text-dark};
   --text-secondary: #9ca3af;
-  --primary: #3531c6;
-  --primary-dark: #221eb0;
+  --primary: #314fc6;
+  --primary-light: #7893ff;
+  --primary-dark: #122982;
+  --primary-dark-bc: #182866;
   --danger: #e63c3c;
   --danger-dark: #b02e2e;
   --success: #1be15b;
@@ -32,6 +38,7 @@
   --info: #3698c7;
   --cropper-outline-color: #{$background-body-dark};
   --cropper-overlay-color: #{$background-card-light};
+  --gray: #5d5d5d;
 }
 
 

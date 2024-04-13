@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {UserModel} from "@shared/models/user.model";
 import {HttpClient} from "@angular/common/http";
+import {CardModel} from "@shared/models/card.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +27,11 @@ export class UserService {
     return this._userData
   }
 
+  set userData(user: UserModel | null) {
+    this._userData.next(user)
+  }
   getUserData$(): Observable<UserModel | null> {
     return this._userData$
   }
 
-  set userData(user: UserModel | null) {
-    this._userData.next(user)
-  }
 }

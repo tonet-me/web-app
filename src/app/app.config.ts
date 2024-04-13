@@ -12,12 +12,9 @@ import {jwtRefreshInterceptor} from "@core/http/jwt-refresh.interceptor";
 import {GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
 import {ColorSchemeService} from "@shared/services/color-scheme.service";
 import {AppInit} from "@app/app.init";
-import {UserService} from "@shared/services/user.service";
 import {environment} from "@environments/environment";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideToastr} from "ngx-toastr";
-import {AuthService} from "@core/auth/services/auth.service";
-import {AuthGuard} from "@core/auth/guards/auth.guard";
 
 export const appConfig: ApplicationConfig = {
   providers: [

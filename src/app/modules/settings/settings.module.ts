@@ -5,7 +5,6 @@ import {SettingsComponent} from "@app/modules/settings/settings.component";
 import {BreadcrumbComponent} from "@shared/component/breadcrumb/breadcrumb.component";
 import {SwitchComponent} from "@shared/component/switch/switch.component";
 import {InlineSvgComponent} from "@shared/component/inline-svg/inline-svg.component";
-import {ButtonComponent} from "@shared/component/button/button.component";
 import {
   ModifyPersonalInfoComponent
 } from "@app/modules/settings/pages/modify-personal-info/modify-personal-info.component";
@@ -30,7 +29,6 @@ import {ImageCropperModule} from "ngx-image-cropper";
     BreadcrumbComponent,
     SwitchComponent,
     InlineSvgComponent,
-    ButtonComponent,
     UploaderComponent,
     NgSelectModule,
     GetImageUrlPipe,

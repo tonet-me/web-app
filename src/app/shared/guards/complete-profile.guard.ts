@@ -9,7 +9,7 @@ export const completeProfileGuard: CanActivateFn = (route, state) => {
   return userService.getUserData$().pipe(
     map((user) => {
       if ((!user?.first_name || !user.last_name)) {
-        router.navigate(['/setting/personal-information'], {queryParams: {new_user: true}})
+        router.navigate(['/setting/personal-information'], {queryParams: {new_user: true}}).then()
       }
       return !!(user?.first_name && user.last_name)
     })

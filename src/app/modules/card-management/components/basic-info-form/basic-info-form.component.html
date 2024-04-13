@@ -1,0 +1,63 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-12">
+      <app-uploader [imageUrl]="form.controls['photo_url'].value"
+                    (imageUrlChange)="form.controls['photo_url'].patchValue($event)"/>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <label class="required-flag">Personal or Business Title</label>
+        <div class="input-container">
+          <input appInput type="text" formControlName="title" placeholder="Enter your Personal or Business Title">
+        </div>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <label class="required-flag">Your Personalized Link</label>
+        <div class="input-container">
+          <input appInput appReplaceSpace appPrefix [showClearIcon]="false" prefix="tonet.me/" type="text"
+                 formControlName="name"
+                 placeholder="Enter your Unique username">
+          @if (isExistName !== null) {
+            <app-inline-svg *ngIf="!isExistName" class="icon icon-transparent"
+                            src="assets/icons/tick-circle.svg"
+                            fill="var(--success)"
+                            width="30px"
+                            height="30px"/>
+            <app-inline-svg *ngIf="isExistName" class="icon icon-transparent"
+                            src="assets/icons/close-circle.svg"
+                            fill="var(--danger)"
+                            width="30px"
+                            height="30px"/>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <label>Description</label>
+        <div class="input-container">
+          <textarea type="text" formControlName="about"
+                    placeholder="Describe your item, event, or experience"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="form-field">
+        <div class="d-flex justify-content-between align-items-center">
+          <p>Card Activation Status :</p>
+          <app-switch [status]="form.controls['status'].value"
+                      (statusChange)="form.controls['status'].patchValue($event)"></app-switch>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 pt-4">
+    <button type="submit" class="btn btn-full btn-primary">
+      Confirm for Next Step
+    </button>
+  </div>
+
+</form>

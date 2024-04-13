@@ -1,0 +1,18 @@
+<ng-container
+  *ngIf="{ activeId: activeStepId$ | async } as O">
+  <ul class="step_row d-flex justify-content-start my-3 p-0" *ngIf="O.activeId">
+    <li class="step_item"
+        *ngFor="let step of steps"
+        [routerLink]="step.link"
+        [ngClass]="{ active: O.activeId === step.id, done: O.activeId > step.id}">
+      <div class="step_id d-flex align-items-center justify-content-between">
+        <div class="step_id--circle d-flex justify-content-center align-items-center">
+          <span class="step_circle--name">{{ step.id }}</span>
+        </div>
+      </div>
+      <div class="step-details d-flex align-items-center flex-column">
+        <div class="step-title">{{ step.name }}</div>
+      </div>
+    </li>
+  </ul>
+</ng-container>

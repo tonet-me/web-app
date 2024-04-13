@@ -1,11 +1,10 @@
-import {Component, DestroyRef, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Component, DestroyRef, HostListener, OnInit} from '@angular/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {AuthService} from "@core/auth/services/auth.service";
 import {SocialProviderEnum} from "@core/auth/enums/social-provider";
-import {filter, iif, map, mergeMap, of, Subscription, switchMap} from "rxjs";
+import { iif, map, mergeMap, of} from "rxjs";
 import {UserService} from "@shared/services/user.service";
 import {Router} from "@angular/router";
-import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 import {UploaderService} from "@shared/services/uploader.service";
 
 @Component({

@@ -1,14 +1,14 @@
-<div class="uploader d-flex align-items-center justify-content-center">
-  <input type="file" #file class="d-none" (change)="_imageChangedEvent = $event; this._croppedImage = $event"
+<div class="uploader d-flex align-items-center justify-content-center mb-3">
+  <input type="file" #file class="d-none" name="file-input" (change)="_imageChangedEvent = $event; this._croppedImage = $event"
          accept="image/jpeg, image/png">
-  <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()">
+  <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()" >
     @if (imageURL()) {
       <img [src]="imageURL()">
     } @else {
-      <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px"/>
+      <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px" fill="#fff"/>
     }
-    <button class="upload-btn d-flex align-items-center justify-content-center">
-      <app-inline-svg src="assets/icons/document-upload.svg" class="me-1" width="20px" height="20px" fill="#4169E1"/>
+    <button type="button" class="upload-btn d-flex align-items-center justify-content-center">
+      <app-inline-svg src="assets/icons/document-upload.svg" class="me-1" width="20px" height="20px" fill="var(--text)"/>
       upload
     </button>
 
@@ -30,6 +30,6 @@
 
   <div class="d-flex flex-row-reverse pt-4">
     <button class="btn btn-primary flex-1" (click)="previewSelectedImage()">upload</button>
-    <button class="btn flex-1" (click)="_imageChangedEvent = null">cancel</button>
+    <button class="btn btn-background flex-1 me-2" (click)="_imageChangedEvent = null">cancel</button>
   </div>
 </app-modal>

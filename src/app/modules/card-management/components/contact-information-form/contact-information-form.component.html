@@ -1,0 +1,84 @@
+<form appFormSubmit [formGroup]="form" (ngSubmit)="submit()" >
+  <div class="d-flex align-items-center">
+    <app-inline-svg class="me-2" src="assets/icons/call.svg" fill="var(--text)"/>
+    <h3>Phone Numbers</h3>
+  </div>
+
+
+  <div class="row " formArrayName="phoneNumbers">
+  @for (item of getFormArray('phoneNumbers'); track i; let i = $index) {
+    <ng-container [formGroupName]="i" >
+      <div class="col-md-4 col-12 mb-4">
+        <div class="form-field">
+          <div class="input-container">
+            <app-inline-svg (click)="removeFromArray('phoneNumbers', i)"
+                            src="assets/icons/minus-circle.svg"
+                            width="28px" height="28px"
+                            fill="var(--danger)" class="d-flex align-items-center cursor-pointer me-1"/>
+            <input appInput type="text" formControlName="title" placeholder="Enter Title: mobile">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-12 mb-4">
+        <div class="form-field">
+          <div class="input-container">
+            <ng-select class="col-auto me-2"
+                       [clearable]="false"
+                       formControlName="country_code"
+                       (change)="onSelectedCountry($event)"
+                       [searchable]="true">
+              @for (item of countryList; track item.code) {
+                <ng-option [value]="item.code">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <i class="me-2" style="font-size: 25px">{{ item.icon }}</i>
+                    <p class="d-none">{{ item.name }}</p>
+                    {{ item.dial_code }}
+                  </div>
+                </ng-option>
+              }
+            </ng-select>
+            <input appInput type="tel" formControlName="number" placeholder="Enter Phone: 501234567">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  }
+  </div>
+  <button type="button" class="btn btn-background btn-full" (click)="addToForm('phoneNumbers')">
+    <app-inline-svg src="assets/icons/add-circle.svg" width="28px" height="28px" fill="var(--success)" class="me-2"/>
+    Add Phone number
+  </button>
+
+  <div class="d-flex align-items-center">
+    <app-inline-svg class="me-2" src="assets/icons/sms.svg" fill="var(--text)"/>
+    <h3>Emails</h3>
+  </div>
+  <div class="row" formArrayName="emails">
+  @for (item of getFormArray('emails'); track item.controls['value'].value; let i = $index) {
+    <ng-container  [formGroupName]="i">
+      <div class="col-md-4 col-12 mb-4">
+        <div class="form-field">
+          <div class="input-container">
+            <app-inline-svg (click)="removeFromArray('emails', i)" src="assets/icons/minus-circle.svg"
+                            width="28px" height="28px"
+                            fill="var(--danger)" class="d-flex align-items-center cursor-pointer me-1"/>
+            <input appInput type="text" formControlName="title" placeholder="Enter Title: Fax">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-12 mb-4">
+        <div class="form-field">
+          <div class="input-container">
+            <input appInput type="tel" formControlName="value" placeholder="Enter Email: someone@example.com">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  }
+  </div>
+  <button type="button" class="btn btn-background btn-full" (click)="addToForm('emails')">
+    <app-inline-svg src="assets/icons/add-circle.svg" width="28px" height="28px" fill="var(--success)" class="me-2"/>
+    Add Email
+  </button>
+  <button class="btn btn-full btn-primary my-5 " type="submit">Confirm for Next Step</button>
+</form>

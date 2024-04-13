@@ -1,0 +1,100 @@
+.user-card {
+  .card-header {
+    color: #fff !important;
+    background: var(--primary-dark-bc);
+    border-radius: 32px;
+    transition: .5s;
+
+    &.deactive {
+      background: var(--main-background-darker);
+      transition: .5s;
+    }
+
+
+    &__img-holder {
+      transform: translateY(16px);
+      height: clamp(5rem, 4.1176rem + 4.4118vw, 6.875rem);
+      width: clamp(5rem, 4.1176rem + 4.4118vw, 6.875rem);
+      border-radius: 32px;
+      background: var(--primary);
+      & img{
+        border-radius: 32px;
+        width: inherit;
+        height: inherit;
+      }
+    }
+
+    & .title {
+      & h3 {
+        color: var(--text);
+        font-size: clamp(0.9rem, 0.6176rem + 1.4118vw, 1.2rem);
+      }
+
+      & p {
+        color: var(--primary-light);
+        font-size: clamp(0.8rem, 0.6176rem + 1.4118vw, 1rem);
+      }
+    }
+
+    & .setting {
+      text-align: right;
+
+      & .more {
+        position: relative;
+
+        & .operations {
+          display: none;
+          position: absolute;
+          top: 30px;
+          right: 0;
+          width: 150px;
+          border-radius: 16px;
+          background: var(--main-background);
+
+          &.show-operations {
+            display: block;
+            z-index: 11;
+          }
+
+          & .item {
+            cursor: pointer;
+            height: 50px;
+
+            &:hover {
+              background: var(--main-background-darker);
+              border-radius: 16px;
+            }
+          }
+        }
+      }
+
+      & small {
+        color: var(--text);
+        font-size: clamp(0.7rem, 0.6176rem + 1.4118vw, .8rem);
+        @media screen and (max-width: 425px) {
+          .created-at {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+qrcode::ng-deep .qrcode {
+  border-radius: 16px;
+  background: var(--main-background);
+
+  & canvas {
+    padding: 10px;
+    border-radius: 16px !important;
+  }
+}
+
+.report-section {
+  border-radius: 32px;
+  border: 3px solid var(--main-background-darker);
+  width: 100%;
+}

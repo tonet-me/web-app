@@ -1,28 +1,30 @@
 
 .uploader {
   .image-holder {
-    width: 200px;
-    height: 200px;
+    width: clamp(9.375rem, 7.9044rem + 7.3529vw, 12.5rem);
+    height: clamp(9.375rem, 7.9044rem + 7.3529vw, 12.5rem);
     background: var(--primary);
     border-radius: 100px;
     position: relative;
     cursor: pointer;
-    & img{
-      width: 200px;
-      height: 200px;
+
+    & img {
+      width: clamp(9.375rem, 7.9044rem + 7.3529vw, 12.5rem);
+      height: clamp(9.375rem, 7.9044rem + 7.3529vw, 12.5rem);
       border-radius: 100px;
       object-fit: cover;
     }
-    & .upload-btn{
+
+    & .upload-btn {
       position: absolute;
       bottom: -10px;
       right: 0;
       height: 40px;
       width: 120px;
       font-size: .9rem;
-      background: #fff;
+      background: var(--main-background);
       border-radius: 32px;
-      color: #4169E1;
+      color: var(--text);
       border: none;
       cursor: pointer;
     }

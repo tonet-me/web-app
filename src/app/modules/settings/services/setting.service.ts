@@ -13,11 +13,11 @@ export class SettingService {
   }
 
   getCountries(): Observable<countryModel[]> {
-    return this.http.get<countryModel[]>(environment.siteUrl + 'assets/data/country-code.json')
+    return this.http.get<countryModel[]>(environment.panelUrl + 'assets/data/country-code.json')
   }
 
   getIpInfo(): Observable<IpInfoModel> {
-    return this.http.get<IpInfoModel>('https://ipinfo.io', )
+    return this.http.get<IpInfoModel>('https://ipinfo.io')
   }
 
 }

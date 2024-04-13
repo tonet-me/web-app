@@ -1,0 +1,121 @@
+.step_row {
+  font-weight: bold;
+
+  .step_item {
+    cursor: pointer;
+    flex-grow: 1;
+
+    .step_id {
+
+      .step_id--circle {
+        width: 53px;
+        height: 51px;
+        border: 3px solid var(--main-background);
+        border-radius: 100px;
+        color: var(--text);
+        font-size: 1rem;
+        background: var(--main-background);
+      }
+
+      &:before {
+        content: ' ';
+        flex-basis: calc(50% - 23px);
+        height: 6px;
+        background: var(--main-background);
+      }
+
+      &:after {
+        content: ' ';
+        flex-basis: calc(50% - 23px);
+        height: 6px;
+        background: var(--main-background);
+      }
+    }
+
+    &:first-child {
+      .step_id {
+        &:before {
+          background: transparent !important;
+        }
+      }
+    }
+
+    &:last-child {
+      .step_id {
+        &:after {
+          background: transparent !important;
+        }
+      }
+    }
+
+    &.active {
+      &:not(:first-child) {
+        .step_id {
+          &:before {
+            background: var(--primary) !important;
+          }
+        }
+      }
+
+      .step_id {
+        .step_id--circle {
+          border-color: var(--primary) !important;
+          & span{
+            color: #fff !important;
+          }
+          background: var(--primary) !important;
+        }
+      }
+    }
+
+    &.done {
+      &:not(:first-child) {
+        .step_id {
+          &:before {
+            background: var(--primary) !important;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        .step_id {
+          &:after {
+            background: var(--primary) !important;
+          }
+        }
+      }
+
+      .step_id {
+        .step_id--circle {
+          border-color: var(--primary) !important;
+          & span{
+            color: #fff !important;
+          }
+          background: var(--primary) !important;
+        }
+      }
+    }
+
+    .step-details {
+      .step-title {
+        margin: 10px 0;
+        font-size: .9rem;
+        color: var(--text);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 567px) {
+    margin-bottom: 2rem !important;
+
+    .step-details {
+      display: none !important;
+    }
+    .step_id {
+      & .step_id--circle {
+        width: 36px !important;
+        height: 36px !important;
+      }
+    }
+  }
+}

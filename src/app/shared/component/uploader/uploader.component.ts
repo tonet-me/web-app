@@ -15,6 +15,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {ImageCroppedEvent, ImageCropperModule, LoadedImage} from "ngx-image-cropper";
 import {ModalComponent} from "@shared/component/modal/modal.component";
 import {mergeMap} from "rxjs";
+import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
 
 @Component({
   selector: 'app-uploader',
@@ -39,7 +40,7 @@ export class UploaderComponent {
               private destroyRef: DestroyRef) {
     effect(() => {
       if (this.imageUrl) {
-        this.imageURL.set(this.imageUrl)
+        this.imageURL.set(new GetImageUrlPipe().transform(this.imageUrl))
       }
     }, {allowSignalWrites: true});
   }

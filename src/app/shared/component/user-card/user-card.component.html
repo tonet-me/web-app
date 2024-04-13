@@ -1,0 +1,79 @@
+<div class="user-card py-3 mb-3">
+  <div class="d-flex card-header mb-3 px-sm-4 px-3"
+       [ngClass]="{'deactive' : card.status === CardActivationEnum.deactive}">
+    <div class="card-header__img-holder me-2 me-sm-3 d-flex align-items-center justify-content-center">
+      <app-inline-svg *ngIf="!card.photo_url" src="assets/icons/user.svg" fill="#fff" width="40px" height="40px"/>
+      <img *ngIf="card.photo_url" [src]="card.photo_url | getImageUrl" [alt]="card.name + 'image'"/>
+    </div>
+    <div class="d-flex justify-content-between flex-1">
+      <div class="d-flex flex-column align-items-start justify-content-center pe-2 pe-sm-3 title">
+        <h3 class="my-2">{{ card.title }}</h3>
+        <p class="my-2">{{ '@' + card.name }}</p>
+      </div>
+      <div class=" d-flex flex-column align-items-end justify-content-center">
+        <div class="setting d-flex flex-column align-items-end justify-content-center">
+          <div class="d-flex align-items-center">
+            <app-switch class="pe-1" [status]="card.status === CardActivationEnum.active"
+                        (statusChange)="changeCardStatus(card.id)"/>
+            <div class="more">
+              <app-inline-svg class="cursor-pointer" src="assets/icons/more.svg" fill="var(--text)" width="25px"
+                              (click)="card.show_operations = !card.show_operations"
+                              (clickOutside)="card.show_operations = false"
+                              height="25px"/>
+              <div class="operations"
+                   [ngClass]="{'show-operations': card.show_operations}">
+                <div class="item d-flex align-items-center p-3" (click)="onSeeDetails(card.id)"
+                     *ngIf="btnPermission?.detail">
+                  <app-inline-svg class="pe-2" src="assets/icons/card.svg" fill="var(--text)" width="25px"
+                                  height="25px"/>
+                  <span>Details</span>
+                </div>
+                <div class="item d-flex align-items-center p-3" (click)="onEditData(card.id)"
+                     *ngIf="btnPermission?.edit">
+                  <app-inline-svg class="pe-2" src="assets/icons/edit.svg" fill="var(--text)" width="25px"
+                                  height="25px"/>
+                  <span>Edit</span>
+                </div>
+                <div class="item d-flex align-items-center p-3" (click)="showConfirmModal = true"
+                     *ngIf="btnPermission?.delete">
+                  <app-inline-svg class="pe-2" src="assets/icons/trash.svg" fill="var(--text)" width="25px"
+                                  height="25px"/>
+                  <span>Delete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <small class="my-2"><span class="created-at">Created at </span>{{ card.created_at | date }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showSecondRow">
+    <div
+      class="d-flex justify-content-center align-items-center justify-content-sm-start flex-sm-row flex-column-reverse pt-3">
+      <qrcode [qrdata]="environment.siteUrl + card.name"
+              [width]="150"
+              [colorDark]="'#333'"
+              colorLight=""
+              errorCorrectionLevel="H"
+              cssClass="qrcode"/>
+      <div class="report-section ms-sm-4 ms-0 flex-1 p-3 mb-sm-0 mb-3 ">
+        <div class="d-flex justify-content-center align-items-center flex-column flex-1">
+          <app-inline-svg src="assets/icons/chart-1.svg" fill="var(--text)" width="50px" height="50px"/>
+          <h3>no data found it </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-confirm-modal
+  [(showModal)]="showConfirmModal"
+  icon="assets/icons/trash.svg"
+  iconSize="100px"
+  confirmationText="Delete"
+  [isDelete]="true"
+  title="Are You Sure You Want to Remove This Card?"
+  (onConfirm)="deleteCard(card.id)"
+></app-confirm-modal>
+

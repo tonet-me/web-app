@@ -1,0 +1,130 @@
+<div class="user-card" *ngIf="userCard$ | async as card">
+  <app-breadcrumb
+    title="card"
+    description="Personal Profile Card"
+    backLink="/"
+  />
+  <app-user-card
+    [btnPermission]="{delete: true , edit: true , detail: false}"
+    [card]="card" [showSecondRow]="false" (onChangeCardStatus)="onChangeStatus(card)"
+    (onDeleteCard)="onDeletedCard($event)"/>
+
+  <div class="info-box">
+    <div class="title">Personal Information</div>
+    <div class="row">
+      <div class="col-md-6 col-12 field">
+        <div class="key">Title</div>
+        <div class="value d-flex align-items-center">
+          {{ card.title }}
+        </div>
+      </div>
+      <div class="col-md-6 col-12 field">
+        <div class="key">Card Link</div>
+        <div class="value d-flex align-items-center">
+          <app-inline-svg src="assets/icons/link.svg" fill="var(--text)" class="me-2"/>
+          <a class="value" [href]="environment.siteUrl + card.name ">{{ environment.siteUrl }}{{ card.name }}</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-12 field d-flex flex-column justify-content-center">
+        <div class="key">About Card</div>
+        <div class="value d-flex align-items-center">
+          {{ card.about || 'without About card' }}
+        </div>
+      </div>
+      <div class="col-md-6 col-12 field d-flex align-items-center justify-content-center">
+        <qrcode [qrdata]="environment.siteUrl + card.name"
+                [width]="100"
+                [colorDark]="'#333'"
+                colorLight=""
+                errorCorrectionLevel="H"
+                cssClass="qrcode"/>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="title">Social Medias</div>
+    <div class="row">
+      @for (item of card.social_medias; track item.type) {
+        <a [href]="item.value" target="_blank"
+           class="social-media d-flex align-items-center justify-content-center col-3 col-sm-2 cursor-pointer my-2">
+          <img src="assets/social-media/{{item.type | socialMediaName}}.svg"/></a>
+      } @empty {
+        <div class=" d-flex flex-column justify-content-center align-items-center p-2">
+          <app-inline-svg class="pb-2" src="assets/icons/heart-circle.svg" fill="var(--text)" width="50px"
+                          height="50px"/>
+          <span class="empty-text">you don't have any Social Medias on this card</span>
+        </div>
+      }
+    </div>
+  </div>
+
+
+  <div class="info-box">
+    <div class="title">Phone Numbers</div>
+    <div class="row">
+      @for (item of card.phone_numbers; let i = $index; track i) {
+        <div class="col-sm-6 col-12 mb-3 mb-sm-0">
+          <div class="box-container p-3">
+            <div class="d-flex align-items-center">
+              <app-inline-svg class="pe-2" src="assets/icons/call.svg" fill="var(--text)" width="22px" height="22px"/>
+              <span>{{ item.value.prefix }}{{ item.value.number }}</span>
+            </div>
+            <div class="box-container__title mt-2">{{ item.title }}</div>
+          </div>
+        </div>
+      } @empty {
+        <div class=" d-flex flex-column justify-content-center align-items-center p-2">
+          <app-inline-svg class="pb-2" src="assets/icons/call.svg" fill="var(--text)" width="50px" height="50px"/>
+          <span class="empty-text">you don't have any phone number on this card</span>
+        </div>
+      }
+    </div>
+  </div>
+
+
+  <div class="info-box">
+    <div class="title">Emails</div>
+    <div class="row">
+      @for (item of card.emails; let i = $index; track i) {
+        <div class="col-sm-6 col-12  mb-3 mb-sm-0">
+          <div class="box-container p-3">
+            <div class="d-flex align-items-center">
+              <app-inline-svg class="pe-2" src="assets/icons/sms.svg" fill="var(--text)" width="22px" height="22px"/>
+              <span>{{ item.value }}</span>
+            </div>
+            <div class="box-container__title mt-2">{{ item.title }}</div>
+          </div>
+        </div>
+      } @empty {
+        <div class=" d-flex flex-column justify-content-center align-items-center p-2">
+          <app-inline-svg class="pb-2" src="assets/icons/sms.svg" fill="var(--text)" width="50px" height="50px"/>
+          <span class="empty-text">you don't have any email on this card</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="title">Extra Links</div>
+    <div class="row">
+      @for (item of card.links; let i = $index; track i) {
+        <div class="col-sm-6 col-12  mb-3 mb-sm-0">
+          <div class="box-container p-3">
+            <div class="d-flex align-items-center">
+              <app-inline-svg class="pe-2" src="assets/icons/link.svg" fill="var(--text)" width="22px" height="22px"/>
+              <a [href]="item.value">{{ item.value }}</a>
+            </div>
+            <div class="box-container__title mt-2">{{ item.title }}</div>
+          </div>
+        </div>
+      } @empty {
+        <div class=" d-flex flex-column justify-content-center align-items-center p-2">
+          <app-inline-svg class="pb-2" src="assets/icons/link.svg" fill="var(--text)" width="50px" height="50px"/>
+          <span class="empty-text">you don't have any link on this card</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

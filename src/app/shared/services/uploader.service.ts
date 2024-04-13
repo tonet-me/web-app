@@ -18,7 +18,6 @@ export class UploaderService {
   }
 
   getFileFromBlobUrl(blobUrl: string){
-    console.log(blobUrl)
     return this.http.get(blobUrl, { responseType: 'blob' }).pipe(
       map((blob) => {
        return  new File([blob], 'filename.txt', { type: 'text/plain' });

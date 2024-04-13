@@ -57,10 +57,13 @@
     & .key {
       color: var(--text);
       margin-bottom: 8px;
+      font-size: clamp(0.8rem, 0.7059rem + 0.4706vw, 1rem);
     }
 
     & .value {
+      word-break: break-all;
       color: var(--text-secondary);
+      font-size: clamp(0.8rem, 0.7059rem + 0.4706vw, 1rem);
     }
   }
 }

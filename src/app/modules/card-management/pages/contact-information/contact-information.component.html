@@ -1,0 +1,5 @@
+<app-contact-information-form [form]="form" [countryList]="countryList"
+                              (onSubmit)="onSubmit()"
+                              (selectedCountryChange)="onSelectedCountry($event)"
+                              (onRemoveFormControl)="onRemoveFormControl($event)"
+                              (onAddFormControl)="onAddFormControl($event)"/>

@@ -1,5 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgClass, NgIf} from "@angular/common";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Inject,
+  Input, OnChanges,
+  Output
+} from '@angular/core';
+import {DOCUMENT, NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-modal',
@@ -12,14 +19,23 @@ import {NgClass, NgIf} from "@angular/common";
   styleUrl: './modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalComponent {
+export class ModalComponent implements OnChanges {
   @Input() heightSize: any = 55;
   @Input() showModal!: boolean;
   @Input() closeable = true;
   @Input() size: 'lg' | 'md' | 'sm' = 'md';
-  @Output() showModalChange = new EventEmitter();
+  @Output() showModalChange: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private document: Document) {
+
+  }
+
+  ngOnChanges() {
+    if (this.showModal) {
+      this.document.body.style.overflowY = 'hidden';
+    } else {
+      this.document.body.style.overflowY = 'auto'
+    }
   }
 
   close() {

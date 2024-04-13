@@ -18,7 +18,6 @@ export class AuthService implements OnInit {
 
   constructor(private socialAuthService: SocialAuthService,
               private http: HttpClient,
-              private router: Router,
               private cookieService: CookieService) {
   }
 
@@ -62,9 +61,9 @@ export class AuthService implements OnInit {
 
   logout() {
     this.cookieService.deleteAll();
-    this.socialAuthService.signOut(true)
+    this.socialAuthService.signOut(true).then()
     //todo change this with route later
-    window.location.href = environment.siteUrl + 'auth'
+    window.location.href = environment.panelUrl + 'auth'
   }
 
 

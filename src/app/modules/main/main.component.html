@@ -1,17 +1,50 @@
-<div class="main" *ngIf="userService.getUserData$() | async as user">
-  <div class="d-flex justify-content-between align-items-center">
-  <div class="d-flex align-items-center">
-    <div class="image-holder d-flex align-items-center justify-content-center me-4">
-      <app-inline-svg *ngIf="!user.profile_photo_url" src="assets/icons/user.svg"/>
-      <img *ngIf="user.profile_photo_url" [src]="user.profile_photo_url | getImageUrl" />
+<div class="main" *ngIf="{user: userService.getUserData$() | async , cards: cardService.getUserCards$() | async } as O">
+  <div class="d-flex justify-content-between align-items-center ">
+    <div class="d-flex align-items-center">
+      <div class="image-holder d-flex align-items-center justify-content-center me-md-4 me-2">
+        <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg"/>
+        <img *ngIf="O.user!.profile_photo_url" [src]="O.user!.profile_photo_url | getImageUrl"/>
+      </div>
+      <div class="main__title">
+        <h2>{{ O.user!.first_name |titlecase }} {{ O.user!.last_name |titlecase }}</h2>
+        <h3>Welcome back</h3>
+      </div>
     </div>
-    <div class="main__title">
-      <h2>{{user.first_name |titlecase}} {{user.last_name |titlecase}}</h2>
-      <h3>Welcome back</h3>
+    <div class="cursor-pointer btn-container" routerLink="setting">
+      <app-inline-svg src="assets/icons/setting.svg" width="40px" height="40px" fill="var(--text)"/>
     </div>
   </div>
-    <div class="cursor-pointer btn-container">
-      <app-inline-svg routerLink="setting"  src="assets/icons/setting.svg" width="40px" height="40px" fill="var(--text)"/>
-    </div>
+  <div class="main__card-container">
+    @if (O.cards! && O.cards!.length !== 0) {
+      <div class="header">
+        <div class="d-flex justify-content-between align-items-center py-4">
+          <div class="d-flex align-items-center">
+            <app-inline-svg class="me-2" src="assets/icons/cards.svg" fill="var(--text)" width="30px" height="30px"/>
+            <h3 class="m-0">Cards</h3>
+          </div>
+          <button class="btn btn-primary" routerLink="card-management">
+            <app-inline-svg src="assets/icons/add-circle.svg" width="20" height="20" fill="#fff"/>
+            Add Card
+          </button>
+        </div>
+      </div>
+    }
+
+    @for (item of O.cards; track item.id) {
+      <app-user-card [card]="item" (onChangeCardStatus)="onChangeCardStatus(item)" (onDeleteCard)="onDeleteCard($event)"/>
+    } @empty {
+      <div class="d-flex flex-column align-items-center py-5">
+        <div class="empty-box d-flex flex-column align-items-center">
+          <img class="mb-2" src="assets/images/card.png">
+          <p class="my-4">Currently, you don't have any cards.</p>
+          <button class="btn btn-primary btn-full" routerLink="card-management">
+            <app-inline-svg src="assets/icons/add-circle.svg" width="20" height="20" fill="#fff"/>
+            Add New Card
+          </button>
+        </div>
+      </div>
+    }
+
   </div>
 </div>
+

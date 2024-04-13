@@ -1,0 +1,43 @@
+.social-media {
+  & .title {
+    text-align: center;
+    font-size: clamp(1.2rem, 1.7206rem + -2.6029vw, 0.09375rem);
+    font-weight: lighter;
+    line-height: 1.5;
+  }
+
+  &__item {
+    border: 2px solid var(--main-container);
+    border-radius: 16px;
+    margin: 8px 0;
+
+    & input {
+      font-size: .9rem;
+    }
+
+    & .name {
+      height: 45px;
+    }
+
+    & img {
+      filter: grayscale(1);
+      height: 80px;
+      width: 80px;
+
+    }
+
+    &.active {
+      border-color: var(--main-background);
+
+      & img {
+        filter: none;
+      }
+    }
+
+  }
+
+  & .submit-container {
+    position: sticky;
+    bottom: 20px;
+  }
+}

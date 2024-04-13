@@ -23,7 +23,7 @@ import {AsyncPipe, CommonModule} from "@angular/common";
 })
 export class InlineSvgComponent implements OnInit {
   @Input() src!: string;
-  @Input() fill: string = '#fff'
+  @Input() fill?: string;
   @Input() width?: string;
   @Input() height? :string;
   protected svgIcon$!: Observable<any>;

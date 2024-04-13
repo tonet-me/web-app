@@ -24,7 +24,6 @@ export class ModifyPersonalInfoComponent implements OnInit {
   constructor(private _fb: RxFormBuilder,
               private router: Router,
               private destroyRef: DestroyRef,
-              private settingService: SettingService,
               private toast: ToastrService,
               private activatedRoute: ActivatedRoute,
               private userService: UserService
@@ -49,27 +48,17 @@ export class ModifyPersonalInfoComponent implements OnInit {
     const form = new PersonalInfoForm(this.userService.userData.value!);
     this.userEmail = this.userService.userData.value!.email
     this.form = this._fb.formGroup(form) as RxFormGroup;
-    this.settingService.getCountries().pipe(
-      takeUntilDestroyed(this.destroyRef),
-      mergeMap((countryList) =>
-        iif(() => !this.form.get('phone_number').get('number').value,
-          this.settingService.getIpInfo().pipe(
-            map(ipInfo => {
-              return ({countryList, ipInfo});
+    this.activatedRoute.data.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data) => {
+      const res = data["countries"];
+      this.countryList = res.countryList
+          if (res.ipInfo) {
+            const countrySelected = this.countryList.find(((a: any) => a.code === res.ipInfo.country))!
+            this.form.get('phone_number').patchValue({
+              prefix: countrySelected.dial_code,
+              country_code: countrySelected.code,
             })
-          ), of({countryList, ipInfo: null})),
-      )).subscribe(
-      (res) => {
-        this.countryList = res.countryList
-        if (res.ipInfo) {
-          const countrySelected = this.countryList.find(((a: any) => a.code === res.ipInfo.country))!
-          this.form.get('phone_number').patchValue({
-            prefix: countrySelected.dial_code,
-            country_code: countrySelected.code,
-          })
-        }
-      }
-    )
+          }
+    })
   }
 
   submit() {

@@ -1,8 +1,8 @@
-<form class=" pt-4" appFormSubmit [formGroup]="form" >
+<form class=" pt-4" appFormSubmit [formGroup]="form" (ngSubmit)="submit()">
   <div class="row">
     <div class="col-12">
       <app-uploader
-        [imageUrl]="form.controls['profile_photo_url'].value | getImageUrl"
+        [imageUrl]="form.controls['profile_photo_url'].value"
         (imageUrlChange)="form.controls['profile_photo_url'].patchValue($event)"
       />
     </div>
@@ -58,18 +58,18 @@
         <label>Email</label>
         <div class="input-container">
           <input type="email" [value]="userEmail" placeholder="Enter your phone number" [disabled]="true">
-          <app-inline-svg class="icon"
+          <app-inline-svg class="icon icon-transparent"
                           src="assets/icons/tick-circle.svg"
                           fill="var(--success)"
-                          width="35px"
-                          height="35px"/>
+                          width="30px"
+                          height="30px"/>
         </div>
       </div>
     </div>
     <div class="col-12 pt-5 pb-2">
-      <app-button (click)="submit()" type="submit" setClass="btn btn-full btn-primary">
+      <button type="submit" class="btn btn-full btn-primary">
         submit
-      </app-button>
+      </button>
     </div>
   </div>
 </form>
