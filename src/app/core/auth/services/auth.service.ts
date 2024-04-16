@@ -1,11 +1,9 @@
 import {Injectable, OnInit} from '@angular/core';
-import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 import {CookieService} from "ngx-cookie-service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {LoginModel, loginPayload, tokensModel} from "@core/auth/models/auth.model";
-import {Router} from "@angular/router";
-import {environment} from "@environments/environment";
 
 @Injectable({
   providedIn: 'root'

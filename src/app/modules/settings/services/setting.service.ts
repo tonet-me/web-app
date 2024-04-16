@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {countryModel, IpInfoModel} from "../models/setting.model";
-import {environment} from "@environments/environment";
 
 @Injectable({
   providedIn: 'root'

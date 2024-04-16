@@ -48,7 +48,7 @@
       @for (item of card.social_medias; track item.type) {
         <a [href]="item.value" target="_blank"
            class="social-media d-flex align-items-center justify-content-center col-3 col-sm-2 cursor-pointer my-2">
-          <img src="assets/social-media/{{item.type | socialMediaName}}.svg"/></a>
+          <img src="assets/social-media/{{item.type | socialMediaName}}.svg" alt="{{item.type | socialMediaName}}-social-media"/></a>
       } @empty {
         <div class=" d-flex flex-column justify-content-center align-items-center p-2">
           <app-inline-svg class="pb-2" src="assets/icons/heart-circle.svg" fill="var(--text)" width="50px"
