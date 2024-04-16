@@ -6,8 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:1313/v1/',
   siteUrl: 'https://tonet.me/',
-  panelUrl: 'http://localhost:4200/',
-  googleClientID: '161237828313-8lo5u8m243leu3nobfimptckqgrg1r61.apps.googleusercontent.com'
+  googleClientID: '603743334325-3ate4gipca08n88mnqtj9shh3nce96eh.apps.googleusercontent.com'
 };
 
 /*

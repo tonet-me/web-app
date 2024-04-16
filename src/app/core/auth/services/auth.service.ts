@@ -63,8 +63,6 @@ export class AuthService implements OnInit {
     this.cookieService.deleteAll();
     this.socialAuthService.signOut(true).then()
     //todo change this with route later
-    window.location.href = environment.panelUrl + 'auth'
+    window.location.href = window.location.origin  + '/auth'
   }
-
-
 }

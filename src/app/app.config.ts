@@ -15,6 +15,7 @@ import {AppInit} from "@app/app.init";
 import {environment} from "@environments/environment";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideToastr} from "ngx-toastr";
+import {DefaultValidationService} from "@shared/services/default-validation.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,7 +38,6 @@ export const appConfig: ApplicationConfig = {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(environment.googleClientID, {oneTapEnabled: false}),
-
           }
         ],
         onError: (err) => {
@@ -49,7 +49,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: AppInit,
-      deps: [ColorSchemeService],
+      deps: [ColorSchemeService, DefaultValidationService],
     },
   ]
 };

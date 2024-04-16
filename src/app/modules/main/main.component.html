@@ -1,5 +1,5 @@
 <div class="main" *ngIf="{user: userService.getUserData$() | async , cards: cardService.getUserCards$() | async } as O">
-  <div class="d-flex justify-content-between align-items-center ">
+  <div class="d-flex justify-content-between align-items-center mb-4">
     <div class="d-flex align-items-center">
       <div class="image-holder d-flex align-items-center justify-content-center me-md-4 me-2">
         <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg"/>
@@ -17,7 +17,7 @@
   <div class="main__card-container">
     @if (O.cards! && O.cards!.length !== 0) {
       <div class="header">
-        <div class="d-flex justify-content-between align-items-center py-4">
+        <div class="d-flex justify-content-between align-items-center pb-3">
           <div class="d-flex align-items-center">
             <app-inline-svg class="me-2" src="assets/icons/cards.svg" fill="var(--text)" width="30px" height="30px"/>
             <h3 class="m-0">Cards</h3>
@@ -33,7 +33,7 @@
     @for (item of O.cards; track item.id) {
       <app-user-card [card]="item" (onChangeCardStatus)="onChangeCardStatus(item)" (onDeleteCard)="onDeleteCard($event)"/>
     } @empty {
-      <div class="d-flex flex-column align-items-center py-5">
+      <div class="d-flex flex-column align-items-center py-4">
         <div class="empty-box d-flex flex-column align-items-center">
           <img class="mb-2" src="assets/images/card.png">
           <p class="my-4">Currently, you don't have any cards.</p>

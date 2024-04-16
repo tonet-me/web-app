@@ -13,7 +13,7 @@ export class SettingService {
   }
 
   getCountries(): Observable<countryModel[]> {
-    return this.http.get<countryModel[]>(environment.panelUrl + 'assets/data/country-code.json')
+    return this.http.get<countryModel[]>(window.location.origin + '/assets/data/country-code.json')
   }
 
   getIpInfo(): Observable<IpInfoModel> {

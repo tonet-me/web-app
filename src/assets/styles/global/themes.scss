@@ -2,43 +2,42 @@
 
 @mixin light-theme {
   --main-background: #{$background-body-light};
-  --main-background-darker: #dfdfdf;
+  --main-background-darker: #{$background-body-lighter-light};
   --main-container: #{$background-card-light};
   --text: #{$text-light};
-  --text-secondary: #6c7a89;
-  --primary: #2C51BF;
-  --primary-light: #5271d3;
-  --primary-dark: #193074;
-  --primary-dark-bc: #b9c7ff;
-  --danger: #d14747;
-  --danger-dark: #a93232;
-  --success: #427f2e;
-  --success-dark: #2e6d1c;
-  --warning: #d7b426;
-  --info: #2f7fa0;
+  --text-secondary: #{$text-second-light};
+  --primary: #{$primary-light};
+  --primary-light: #{$primary-lighter-light};
+  --primary-dark: #{$primary-darker-light};
+  --primary-dark-bc: #{$primary-background-light};
+  --danger: #{$danger-light};
+  --danger-dark: #{$danger-darker-light};
+  --success: #{$success-light};
+  --success-dark: #{$success-darker-light};
+  --warning: #{$waring-light};
+  --info: #{$info-light};
   --cropper-outline-color: #{$background-body-light};
   --cropper-overlay-color: #{$background-card-light};
-  --gray: #5d5d5d;
 }
 
 @mixin dark-theme {
   --main-background: #{$background-body-dark};
-  --main-background-darker: #1c212d;
+  --main-background-darker: #{$background-body-darker-dark};
   --main-container: #{$background-card-dark};
   --text: #{$text-dark};
-  --text-secondary: #9ca3af;
-  --primary: #314fc6;
-  --primary-light: #7893ff;
-  --primary-dark: #122982;
-  --primary-dark-bc: #182866;
-  --danger: #e63c3c;
-  --danger-dark: #b02e2e;
-  --success: #1be15b;
-  --warning: #aba53b;
-  --info: #3698c7;
+  --text-secondary: #{$text-second-dark};;
+  --primary: #{$primary-dark};
+  --primary-light: #{$primary-lighter-dark};
+  --primary-dark: #{$primary-darker-dark};
+  --primary-dark-bc: #{$primary-background-dark};
+  --danger: #{$danger-dark};
+  --danger-dark: #{$danger-darker-dark};
+  --success: #{$success-dark};
+  --success-dark: #{$success-darker-dark};
+  --warning: #{$waring-dark};
+  --info: #{$info-dark};
   --cropper-outline-color: #{$background-body-dark};
   --cropper-overlay-color: #{$background-card-light};
-  --gray: #5d5d5d;
 }
 
 

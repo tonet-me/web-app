@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
-import {setFormConfig} from "@shared/helper/my-helper";
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,7 +10,6 @@ import {setFormConfig} from "@shared/helper/my-helper";
 })
 export class AppComponent {
   constructor() {
-    setFormConfig()
   }
 
   title = 'my.tonet';
