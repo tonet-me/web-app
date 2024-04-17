@@ -16,4 +16,7 @@ export enum SocialMediaEnum {
   line = 15,
   clubhouse = 16,
   twitch = 17,
+  facebook_messenger = 18,
+  whatsapp_business = 19,
+  skype = 20,
 }

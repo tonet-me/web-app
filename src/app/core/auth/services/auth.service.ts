@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {SocialAuthService} from "@abacritt/angularx-social-login";
 import {CookieService} from "ngx-cookie-service";
 import {Observable} from "rxjs";
@@ -8,18 +8,14 @@ import {LoginModel, loginPayload, tokensModel} from "@core/auth/models/auth.mode
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class AuthService {
   private _accessTokenKey: string = 'access_token';
   private _refreshTokenKey: string = 'refresh_token';
-
   SocialAuth$ = this.socialAuthService.authState;
 
   constructor(private socialAuthService: SocialAuthService,
               private http: HttpClient,
               private cookieService: CookieService) {
-  }
-
-  ngOnInit() {
   }
 
   get accessToken(): string {

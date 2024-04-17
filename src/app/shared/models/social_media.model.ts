@@ -19,4 +19,7 @@ export const socialMediaList = [
   {name: 'line', id: SocialMediaEnum.line},
   {name: 'clubhouse', id: SocialMediaEnum.clubhouse},
   {name: 'twitch', id: SocialMediaEnum.twitch},
+  {name: 'facebook-messenger', id: SocialMediaEnum.facebook_messenger},
+  {name: 'whatsapp-business', id: SocialMediaEnum.whatsapp_business},
+  {name: 'skype', id: SocialMediaEnum.skype},
 ]

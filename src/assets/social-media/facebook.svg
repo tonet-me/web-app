@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="240px" height="240px"><path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/><path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 373.33 373.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="186.67" y1="0" x2="186.67" y2="373.33" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#19aeff"/>
+      <stop offset="1" stop-color="#0065e7"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-1" cx="186.67" cy="186.67" r="186.67"/>
+      <path class="cls-2" d="m150.09,307.11h44.77v-103.29h33.07l6.61-41.72h-39.69v-31.55c0-11.7,11.19-18.32,21.88-18.32h19.33v-34.6l-34.6-1.53c-33.07-2.03-51.39,23.91-51.39,54.95v31.04h-37.65v41.72h37.65v103.29Z"/>
+    </g>
+  </g>
+</svg>

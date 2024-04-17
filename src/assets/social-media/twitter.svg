@@ -1,1 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="240px" height="240px" clip-rule="evenodd" baseProfile="basic"><path fill="#212121" fill-rule="evenodd" d="M38,42H10c-2.209,0-4-1.791-4-4V10c0-2.209,1.791-4,4-4h28	c2.209,0,4,1.791,4,4v28C42,40.209,40.209,42,38,42z" clip-rule="evenodd"/><path fill="#fff" d="M34.257,34h-6.437L13.829,14h6.437L34.257,34z M28.587,32.304h2.563L19.499,15.696h-2.563 L28.587,32.304z"/><polygon fill="#fff" points="15.866,34 23.069,25.656 22.127,24.407 13.823,34"/><polygon fill="#fff" points="24.45,21.721 25.355,23.01 33.136,14 31.136,14"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 373.33 373.33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #212121;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <circle class="cls-2" cx="186.67" cy="186.67" r="186.67"/>
+      <path class="cls-1" d="m280.09,275.71h-56.7L100.14,99.53h56.7l123.24,176.18Zm-49.95-14.94h22.58l-102.63-146.3h-22.58l102.63,146.3Z"/>
+      <polygon class="cls-1" points="118.09 275.71 181.54 202.2 173.24 191.2 100.09 275.71 118.09 275.71"/>
+      <polygon class="cls-1" points="193.7 167.54 201.68 178.9 270.22 99.53 252.6 99.53 193.7 167.54"/>
+    </g>
+  </g>
+</svg>
