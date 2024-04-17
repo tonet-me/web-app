@@ -48,7 +48,7 @@
          [className]="card.social_medias.length > 0 ? 'justify-content-start':'justify-content-center'">
       @for (item of card.social_medias; track item.type) {
         <a [href]="item.value" target="_blank"
-           class="social-media cursor-pointer m-2">
+           class="social-media cursor-pointer">
           <img src="assets/social-media/{{item.type | socialMediaName}}.svg"
                alt="{{item.type | socialMediaName}}-social-media"/></a>
       } @empty {
