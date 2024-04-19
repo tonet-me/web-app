@@ -44,7 +44,7 @@ export class BasicInfoComponent implements OnInit {
         return this.cardManagementService.checkUniqueNameCard(searchValue).pipe(
           map((data) => {
             return {is_exist: data.is_exist, value: searchValue}
-          })
+          }),
         );
       }),
     ).subscribe(
@@ -55,11 +55,10 @@ export class BasicInfoComponent implements OnInit {
             customRules: [forbiddenValue],
             additionalValue: data.value
           })])
-          this.form.get('name')?.updateValueAndValidity()
         } else {
           this.form.get('name')?.clearValidators()
-          this.form.get('name')?.updateValueAndValidity()
         }
+        this.form.get('name')?.updateValueAndValidity()
       }
     )
   }
