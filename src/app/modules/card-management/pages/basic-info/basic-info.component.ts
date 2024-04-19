@@ -6,7 +6,7 @@ import {StepsService} from "@shared/services/steps.service";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {debounceTime, distinctUntilChanged, filter, finalize, mergeMap, of, switchMap, tap} from "rxjs";
+import {debounceTime, distinctUntilChanged, filter, finalize, map, mergeMap, of, switchMap, tap} from "rxjs";
 import {forbiddenValue} from "@shared/helper/my-helper";
 
 @Component({
@@ -39,26 +39,30 @@ export class BasicInfoComponent implements OnInit {
       filter((searchValue) => searchValue && searchValue.length >= 4 && searchValue.length <= 25),
       switchMap((searchValue: string) => {
         if (savedName && savedName === searchValue) {
-          return of({is_exist: false})
+          return of({is_exist: false, value: searchValue})
         }
-        return this.cardManagementService.checkUniqueNameCard(searchValue);
+        return this.cardManagementService.checkUniqueNameCard(searchValue).pipe(
+          map((data) => {
+            return {is_exist: data.is_exist, value: searchValue}
+          })
+        );
       }),
     ).subscribe(
       (data) => {
         this.isExistName = data.is_exist;
         if (data.is_exist) {
-          // this.form.get('name')?.setErrors({'custom': {message: 'Choose a unique name, this one\'s already in use'}})
           this.form.get('name')?.setValidators([RxwebValidators.custom({
             customRules: [forbiddenValue],
-            additionalValue: this.form.get('name')?.value
+            additionalValue: data.value
           })])
-        }else{
+          this.form.get('name')?.updateValueAndValidity()
+        } else {
           this.form.get('name')?.clearValidators()
+          this.form.get('name')?.updateValueAndValidity()
         }
       }
     )
   }
-
 
 
   onSubmit() {

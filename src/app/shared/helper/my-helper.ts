@@ -15,7 +15,6 @@ export function markFormGroupTouched(formGroup: FormGroup | FormArray) {
 }
 
 export function forbiddenValue(additionalValue: string): { [key: string]: any } | null {
-  console.log(additionalValue)// Adjust 'specificValue' to your desired value
   return additionalValue ? { 'forbiddenValue': { message: `Choose a unique name, this one\'s already in use`} } : null;
 }
 
