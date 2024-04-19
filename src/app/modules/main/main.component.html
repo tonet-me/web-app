@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
       <div class="image-holder d-flex align-items-center justify-content-center me-md-4 me-2">
         <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg"/>
-        <img *ngIf="O.user!.profile_photo_url" [src]="O.user!.profile_photo_url | getImageUrl" alt="user-profile"/>
+        <img *ngIf="O.user!.profile_photo_url" [src]="O.user!.profile_photo_url | getImageUrl : 'user'" alt="user-profile"/>
       </div>
       <div class="main__title">
         <h2>{{ O.user!.first_name |titlecase }} {{ O.user!.last_name |titlecase }}</h2>

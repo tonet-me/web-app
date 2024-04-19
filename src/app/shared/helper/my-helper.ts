@@ -1,11 +1,22 @@
-import {FormControl, FormGroup} from "@angular/forms";
+import {AbstractControl, FormArray, FormGroup, ValidatorFn} from "@angular/forms";
 import {ReactiveFormConfig} from "@rxweb/reactive-form-validators";
 
-export function markFormGroupTouched(formGroup: FormGroup) {
-  (<any>Object).values(formGroup.controls).forEach((control: FormControl) => {
-    control.markAsTouched();
-    control.updateValueAndValidity()
+export function markFormGroupTouched(formGroup: FormGroup | FormArray) {
+  Object.values(formGroup.controls).forEach((control) => {
+    if (control instanceof FormGroup) {
+      markFormGroupTouched(control); // Recursively mark FormGroup controls
+    } else if (control instanceof FormArray) {
+      markFormGroupTouched(control); // Recursively mark FormArray controls
+    } else {
+        control.markAsTouched();
+        control.updateValueAndValidity();
+    }
   });
+}
+
+export function forbiddenValue(additionalValue: string): { [key: string]: any } | null {
+  console.log(additionalValue)// Adjust 'specificValue' to your desired value
+  return additionalValue ? { 'forbiddenValue': { message: `Choose a unique name, this one\'s already in use`} } : null;
 }
 
 export function setFormConfig() {

@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit {
             return iif(() => data.new_user,
               this.uploaderService.getFileFromUrl(socialUser.photoUrl.split('=s')[0].concat('=s400-c')).pipe(
                 mergeMap((file) => {
-                  return this.uploaderService.uploadImage(file).pipe(mergeMap((res) => {
+                  return this.uploaderService.uploadImage(file, 'user').pipe(mergeMap((res) => {
                     return this.userService.updateUser({profile_photo_url: res["file-name"]}).pipe(
                       map(() => {
                         return {...data, user: {...data.user, profile_photo_url: res["file-name"]}}

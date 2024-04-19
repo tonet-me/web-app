@@ -1,8 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form appFormSubmit [formGroup]="form" (ngSubmit)="submit()">
   <div class="row">
     <div class="col-12">
-      <app-uploader [imageUrl]="form.controls['photo_url'].value"
-                    (imageUrlChange)="form.controls['photo_url'].patchValue($event)"/>
+      <app-uploader
+        type="card"
+        [imageUrl]="form.controls['photo_url'].value"
+        (imageUrlChange)="form.controls['photo_url'].patchValue($event)"/>
     </div>
     <div class="col-12 py-3">
       <div class="form-field">

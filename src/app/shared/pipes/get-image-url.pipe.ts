@@ -7,8 +7,8 @@ import {environment} from "@environments/environment";
 })
 export class GetImageUrlPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): string {
-    return  environment.apiUrl + 'files/profile/' + value;
+  transform(value: unknown, type: string): string {
+    return  environment.apiUrl + `files/${type}s/profile/` + value;
   }
 
 }

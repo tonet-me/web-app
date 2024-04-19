@@ -3,16 +3,14 @@ import {
   Component, DestroyRef, effect,
   ElementRef,
   EventEmitter,
-  Input, OnInit,
+  Input,
   Output,
   signal,
-  ViewChild
 } from '@angular/core';
 import {InlineSvgComponent} from "@shared/component/inline-svg/inline-svg.component";
 import {UploaderService} from "@shared/services/uploader.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {DomSanitizer} from "@angular/platform-browser";
-import {ImageCroppedEvent, ImageCropperModule, LoadedImage} from "ngx-image-cropper";
+import {ImageCropperModule} from "ngx-image-cropper";
 import {ModalComponent} from "@shared/component/modal/modal.component";
 import {mergeMap} from "rxjs";
 import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
@@ -31,6 +29,7 @@ import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
 })
 export class UploaderComponent {
   @Input() imageUrl: string = '';
+  @Input() type: string = 'user'
   @Output() imageUrlChange: EventEmitter<string> = new EventEmitter<string>()
   protected _imageChangedEvent: any = '';
   protected _croppedImage: any = '';
@@ -40,7 +39,7 @@ export class UploaderComponent {
               private destroyRef: DestroyRef) {
     effect(() => {
       if (this.imageUrl) {
-        this.imageURL.set(new GetImageUrlPipe().transform(this.imageUrl))
+        this.imageURL.set(new GetImageUrlPipe().transform(this.imageUrl, this.type))
       }
     }, {allowSignalWrites: true});
   }
@@ -48,7 +47,7 @@ export class UploaderComponent {
   protected previewSelectedImage() {
     this.uploaderService.getFileFromBlobUrl(this._croppedImage)
       .pipe(
-        mergeMap((res) => this.uploaderService.uploadImage(res)),
+        mergeMap((res) => this.uploaderService.uploadImage(res, this.type)),
         takeUntilDestroyed(this.destroyRef)
       ).subscribe(
       (res) => {

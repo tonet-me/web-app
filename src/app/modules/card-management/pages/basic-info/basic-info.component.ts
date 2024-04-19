@@ -1,13 +1,13 @@
 import {Component, DestroyRef, OnInit} from '@angular/core';
-import {RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
+import {RxFormBuilder, RxFormGroup, RxwebValidators} from "@rxweb/reactive-form-validators";
 import {BasicInfoForm} from "../../models/card-management.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {StepsService} from "@shared/services/steps.service";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {debounceTime, distinctUntilChanged, filter, finalize, map, of, switchMap, tap} from "rxjs";
-import {AsyncValidatorFn, FormControl} from "@angular/forms";
+import {debounceTime, distinctUntilChanged, filter, finalize, mergeMap, of, switchMap, tap} from "rxjs";
+import {forbiddenValue} from "@shared/helper/my-helper";
 
 @Component({
   selector: 'app-basic-info',
@@ -30,7 +30,7 @@ export class BasicInfoComponent implements OnInit {
     this.stepsService.activeStepSubject$.next(1)
     const form = new BasicInfoForm(this.cardManagementService.cardStoreData()!);
     this.form = this._fb.formGroup(form) as RxFormGroup;
-    const savedName =  this.cardManagementService.savedName()
+    const savedName = this.cardManagementService.savedName()
     this.form.controls['name'].valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -47,11 +47,19 @@ export class BasicInfoComponent implements OnInit {
       (data) => {
         this.isExistName = data.is_exist;
         if (data.is_exist) {
-          this.form.get('name')?.setErrors({'unique': {message: 'Choose a unique name, this one\'s already in use'}})
+          // this.form.get('name')?.setErrors({'custom': {message: 'Choose a unique name, this one\'s already in use'}})
+          this.form.get('name')?.setValidators([RxwebValidators.custom({
+            customRules: [forbiddenValue],
+            additionalValue: this.form.get('name')?.value
+          })])
+        }else{
+          this.form.get('name')?.clearValidators()
         }
       }
     )
   }
+
+
 
   onSubmit() {
     if (this.form.valid) {

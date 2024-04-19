@@ -11,10 +11,10 @@ export class UploaderService {
   }
 
 
-  uploadImage(file: File): Observable<{ 'file-name': string }> {
+  uploadImage(file: File , type: string): Observable<{ 'file-name': string }> {
     const formData = new FormData();
-    formData.set('profile-photo', file)
-    return this.http.post<{ 'file-name': string }>('files/profile', formData, {})
+    formData.set(`${type}-profile-photo`, file)
+    return this.http.post<{ 'file-name': string }>(`files/${type}s/profile`, formData, {})
   }
 
   getFileFromBlobUrl(blobUrl: string){

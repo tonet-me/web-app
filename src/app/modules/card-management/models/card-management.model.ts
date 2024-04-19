@@ -1,6 +1,4 @@
 import {
-  async,
-  custom,
   email,
   maxLength,
   minLength, numeric,
@@ -13,7 +11,6 @@ import {
 import {SocialMediaEnum} from "@shared/enums/social-media.enum";
 import {phoneNumber} from "@app/modules/settings/models/setting.model";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
-import {FormControl} from "@angular/forms";
 
 export class BasicInfoForm {
 
