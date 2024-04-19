@@ -15,7 +15,4 @@
   "include": [
     "src/**/*.d.ts"
   ],
-  "exclude": [
-    "index.d.ts"
-  ]
 }

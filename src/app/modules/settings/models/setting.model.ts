@@ -56,7 +56,6 @@ export interface IpInfoModel {
   ip: string
   loc: string
   org: string
-  readme: string
   region: string
   timezone: string
 }
