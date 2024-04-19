@@ -6,8 +6,7 @@ import {StepsService} from "@shared/services/steps.service";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {debounceTime, distinctUntilChanged, filter, finalize, map, mergeMap, of, switchMap, tap} from "rxjs";
-import {forbiddenValue} from "@shared/helper/my-helper";
+import {debounceTime, distinctUntilChanged, filter, map, of, switchMap, tap} from "rxjs";
 
 @Component({
   selector: 'app-basic-info',
@@ -51,9 +50,8 @@ export class BasicInfoComponent implements OnInit {
       (data) => {
         this.isExistName = data.is_exist;
         if (data.is_exist) {
-          this.form.get('name')?.setValidators([RxwebValidators.custom({
-            customRules: [forbiddenValue],
-            additionalValue: data.value
+          this.form.get('name')?.setValidators([RxwebValidators.requiredTrue({
+            message: 'Choose a unique name, this one\'s already in use', conditionalExpression: () => data.value
           })])
         } else {
           this.form.get('name')?.clearValidators()
