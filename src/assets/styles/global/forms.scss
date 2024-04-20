@@ -23,6 +23,18 @@
     position: relative;
   }
 
+  & .mobile-section {
+    & ng-select {
+      position: absolute;
+      max-width: 105px;
+      z-index: 1;
+    }
+
+    & input {
+      padding-left: 105px;
+    }
+  }
+
   & .prefix {
     position: absolute;
     top: 13px;

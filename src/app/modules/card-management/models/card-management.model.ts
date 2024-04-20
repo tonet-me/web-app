@@ -1,4 +1,5 @@
 import {
+  alphaNumeric,
   email,
   maxLength,
   minLength, numeric,
@@ -25,6 +26,7 @@ export class BasicInfoForm {
   }
 
   @required()
+  @alphaNumeric()
   @minLength({value: 1})
   @maxLength({value: 20})
   title!: string;
