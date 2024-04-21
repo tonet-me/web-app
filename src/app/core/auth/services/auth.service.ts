@@ -57,6 +57,6 @@ export class AuthService {
     this.cookieService.deleteAll();
     this.socialAuthService.signOut(true).then()
     //todo change this with route later
-    window.location.href = window.location.origin  + '/auth'
+      window.location.href = window.location.origin  + '/auth'
   }
 }

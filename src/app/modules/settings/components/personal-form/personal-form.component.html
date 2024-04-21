@@ -28,9 +28,8 @@
       </div>
       <div class="form-field">
         <label>Phone number</label>
-        <div class="d-flex flex-wrap mobile-section" formGroupName="phone_number">
-          <ng-select class="col-auto me-2"
-                     [clearable]="false"
+        <div class="mobile-section input-container" formGroupName="phone_number">
+          <ng-select [clearable]="false"
                      formControlName="country_code"
                      (change)="onSelectedCountry($event)"
                      [searchable]="true">
@@ -44,13 +43,8 @@
               </ng-option>
             }
           </ng-select>
-          <div class="form-field flex-1">
-            <div class="input-container">
-              <input appInput type="tel" formControlName="number" placeholder="Enter your phone number"
-                     inputmode="numeric">
-            </div>
-          </div>
-
+          <input appInput type="tel" formControlName="number" placeholder="Enter your phone number"
+                 inputmode="numeric">
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import {Component, DestroyRef, HostListener, OnInit} from '@angular/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {AuthService} from "@core/auth/services/auth.service";
 import {SocialProviderEnum} from "@core/auth/enums/social-provider";
-import { iif, map, mergeMap, of} from "rxjs";
+import {catchError, iif, map, mergeMap, of, throwError} from "rxjs";
 import {UserService} from "@shared/services/user.service";
 import {Router} from "@angular/router";
 import {UploaderService} from "@shared/services/uploader.service";
@@ -34,8 +34,6 @@ export class AuthComponent implements OnInit {
     this.authService.SocialAuth$.pipe(
       takeUntilDestroyed(this.destroyRef),
       mergeMap((socialUser) => {
-        console.log(socialUser.idToken)
-        debugger
         return this.authService.login({
           provider_id: SocialProviderEnum.Google,
           token: socialUser.idToken
@@ -54,7 +52,8 @@ export class AuthComponent implements OnInit {
                   }))
                 })
               ), of(data))
-          }))
+          }),
+        )
       }),
     ).subscribe((res) => {
       console.log(res)

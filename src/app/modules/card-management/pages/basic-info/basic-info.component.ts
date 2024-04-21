@@ -35,7 +35,17 @@ export class BasicInfoComponent implements OnInit {
       distinctUntilChanged(),
       takeUntilDestroyed(this.destroyRef),
       tap(() => this.isExistName = null),
-      filter((searchValue) => searchValue && searchValue.length >= 4 && searchValue.length <= 25),
+      filter((searchValue) => {
+        const regex: RegExp = new RegExp('^[a-zA-Z0-9_ ]+$');
+        if (!regex.test(searchValue)) {
+          this.form.get('name')?.setValidators(RxwebValidators.pattern({
+            expression: {regex},
+            message: 'Only alphabet and numbers are allowed.'
+          }))
+          this.form.get('name')?.updateValueAndValidity()
+        }
+        return searchValue && searchValue.length >= 4 && searchValue.length <= 25 && regex.test(searchValue)
+      }),
       switchMap((searchValue: string) => {
         if (savedName && savedName === searchValue) {
           return of({is_exist: false, value: searchValue})
@@ -49,13 +59,10 @@ export class BasicInfoComponent implements OnInit {
     ).subscribe(
       (data) => {
         this.isExistName = data.is_exist;
-        if (data.is_exist) {
-          this.form.get('name')?.setValidators([RxwebValidators.requiredTrue({
-            message: 'Choose a unique name, this one\'s already in use', conditionalExpression: () => data.value
-          })])
-        } else {
-          this.form.get('name')?.clearValidators()
-        }
+        this.form.get('name')?.setValidators(RxwebValidators.requiredTrue({
+          message: 'Choose a unique name, this one\'s already in use',
+          conditionalExpression: () => data.value && data.is_exist
+        }))
         this.form.get('name')?.updateValueAndValidity()
       }
     )
