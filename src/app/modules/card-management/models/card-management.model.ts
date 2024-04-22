@@ -2,7 +2,7 @@ import {
   alphaNumeric,
   email,
   maxLength,
-  minLength, numeric,
+  minLength, numeric, pattern,
   prop,
   propArray,
   required,
@@ -12,6 +12,7 @@ import {
 import {SocialMediaEnum} from "@shared/enums/social-media.enum";
 import {phoneNumber} from "@app/modules/settings/models/setting.model";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
+import {custom_link_regex} from "@shared/helper/my-helper";
 
 export class BasicInfoForm {
 
@@ -32,6 +33,11 @@ export class BasicInfoForm {
   title!: string;
 
   @required()
+  @pattern({
+      expression: {'custom_link': custom_link_regex},
+      message: 'the link you entered is not valid.'
+    }
+  )
   @minLength({value: 4})
   @maxLength({value: 25})
   name!: string;

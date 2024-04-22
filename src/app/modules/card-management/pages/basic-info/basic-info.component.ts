@@ -6,7 +6,9 @@ import {StepsService} from "@shared/services/steps.service";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {debounceTime, distinctUntilChanged, filter, map, of, switchMap, tap} from "rxjs";
+import {debounceTime, distinctUntilChanged, filter, map, Observable, of, switchMap, tap} from "rxjs";
+import {AsyncValidatorFn, ValidationErrors} from "@angular/forms";
+import {custom_link_regex} from "@shared/helper/my-helper";
 
 @Component({
   selector: 'app-basic-info',
@@ -35,17 +37,7 @@ export class BasicInfoComponent implements OnInit {
       distinctUntilChanged(),
       takeUntilDestroyed(this.destroyRef),
       tap(() => this.isExistName = null),
-      filter((searchValue) => {
-        const regex: RegExp = new RegExp('^[a-zA-Z0-9_ ]+$');
-        if (!regex.test(searchValue)) {
-          this.form.get('name')?.setValidators(RxwebValidators.pattern({
-            expression: {regex},
-            message: 'Only alphabet and numbers are allowed.'
-          }))
-          this.form.get('name')?.updateValueAndValidity()
-        }
-        return searchValue && searchValue.length >= 4 && searchValue.length <= 25 && regex.test(searchValue)
-      }),
+      filter((searchValue) => searchValue && searchValue.length >= 4 && searchValue.length <= 25 && custom_link_regex.test(searchValue)),
       switchMap((searchValue: string) => {
         if (savedName && savedName === searchValue) {
           return of({is_exist: false, value: searchValue})
@@ -59,13 +51,21 @@ export class BasicInfoComponent implements OnInit {
     ).subscribe(
       (data) => {
         this.isExistName = data.is_exist;
-        this.form.get('name')?.setValidators(RxwebValidators.requiredTrue({
-          message: 'Choose a unique name, this one\'s already in use',
-          conditionalExpression: () => data.value && data.is_exist
-        }))
+        this.form.get('name')?.setAsyncValidators([this.checkExistLink(data.is_exist)])
         this.form.get('name')?.updateValueAndValidity()
       }
     )
+  }
+
+  checkExistLink(isExit: boolean): AsyncValidatorFn {
+    return (): Observable<ValidationErrors | null> => {
+      let bReturn: boolean = true;
+      if (isExit) {
+        bReturn = false;
+      }
+      let err: ValidationErrors = {'unique': {message: "Choose a unique name, this one\'s already in use"}};
+      return bReturn ? of(null) : of(err);
+    };
   }
 
 

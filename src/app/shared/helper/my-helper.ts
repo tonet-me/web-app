@@ -14,6 +14,8 @@ export function markFormGroupTouched(formGroup: FormGroup | FormArray) {
   });
 }
 
+export const custom_link_regex: RegExp = new RegExp('^[a-zA-Z0-9]+(?:[_.][a-zA-Z0-9]+)*$');
+
 export function setFormConfig() {
   ReactiveFormConfig.set({
     "internationalization": {
