@@ -6,7 +6,11 @@ import {userCardsResolver} from "@app/modules/main/resolvers/user-cards.resolver
 
 
 const routes: Routes = [
-  {path: '', component: MainComponent, resolve: {cards: userCardsResolver}},
+  {
+    path: '',
+    title: 'My Tonet | Home',
+    component: MainComponent, resolve: {cards: userCardsResolver}
+  },
 ];
 
 @NgModule({

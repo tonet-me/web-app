@@ -57,7 +57,7 @@ export class BasicInfoComponent implements OnInit {
     )
   }
 
-  checkExistLink(isExit: boolean): AsyncValidatorFn {
+  private checkExistLink(isExit: boolean): AsyncValidatorFn {
     return (): Observable<ValidationErrors | null> => {
       let bReturn: boolean = true;
       if (isExit) {

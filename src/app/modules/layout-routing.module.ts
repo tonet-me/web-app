@@ -22,7 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('./card-management/card-management.module').then(m => m.CardManagementModule),
         canActivate: [completeProfileGuard]
       },
-      {path: 'setting', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)},
+      {
+        path: 'setting',
+        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+      },
     ]
   }
 

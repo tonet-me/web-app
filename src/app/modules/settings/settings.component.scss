@@ -1,4 +1,5 @@
-@import "../../../assets/styles/mixins";
+@import "src/assets/styles/mixins/image-holder.scss";
+@import "src/assets/styles/mixins/info-box.scss";
 .setting{
   .image-holder{
    @include image-holder()

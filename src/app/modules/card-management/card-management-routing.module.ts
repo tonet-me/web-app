@@ -14,6 +14,7 @@ const routes: Routes = [
   {
     path: '',
     component: CardManagementComponent,
+    title: 'My Tonet | Add Card',
     children: [
       {path: 'basic-info', component: BasicInfoComponent},
       {path: 'social-media', component: SocialMediaComponent, canMatch: [cardManagementStepsGuard]},
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
+    title: 'My Tonet | Edit Card',
     resolve: {cardData: singleCardInfoResolver},
     component: CardManagementComponent,
     children: [

@@ -1,17 +1,9 @@
 import {Component, DestroyRef, OnDestroy, OnInit} from '@angular/core';
 import {StepModel} from "@shared/models/step.model";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {map, mergeMap} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
+import {map} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {BasicInfoComponent} from "@app/modules/card-management/pages/basic-info/basic-info.component";
-import {SocialMediaComponent} from "@app/modules/card-management/pages/social-media/social-media.component";
-import {cardManagementStepsGuard} from "@app/modules/card-management/guards/card-management-steps.guard";
-import {
-  ContactInformationComponent
-} from "@app/modules/card-management/pages/contact-information/contact-information.component";
-import {getAllCountriesResolver} from "@shared/resolver/get-all-countries.resolver";
-import {ExtraLinkComponent} from "@app/modules/card-management/pages/extra-link/extra-link.component";
 
 @Component({
   selector: 'app-card-management',

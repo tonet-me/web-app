@@ -9,8 +9,13 @@ import {getAllCountriesResolver} from "@shared/resolver/get-all-countries.resolv
 
 
 const routes: Routes = [
-  {path: '', component: SettingsComponent, canActivate: [completeProfileGuard]},
-  {path: 'personal-information', component: ModifyPersonalInfoComponent , resolve: {countries: getAllCountriesResolver}}
+  {path: '', title: 'My Tonet | Setting', component: SettingsComponent, canActivate: [completeProfileGuard]},
+  {
+    path: 'personal-information',
+    title: 'My Tonet | Edit Profile',
+    component: ModifyPersonalInfoComponent,
+    resolve: {countries: getAllCountriesResolver}
+  }
 ];
 
 @NgModule({

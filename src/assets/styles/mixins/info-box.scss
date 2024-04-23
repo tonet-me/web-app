@@ -68,23 +68,3 @@
     }
   }
 }
-
-@mixin image-holder {
-  width: clamp(5rem, 3.409rem + 7.95vw, 9.375rem);
-  height: clamp(5rem, 3.409rem + 7.95vw, 9.375rem);
-  background: var(--primary);
-  border-radius: 50px;
-  & app-inline-svg {
-    &::ng-deep {
-      & svg {
-        width: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
-        height: clamp(1.875rem, 0.739rem + 5.68vw, 5rem);
-      }
-    }
-  }
-  & img {
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-  }
-}

@@ -7,6 +7,7 @@ import {singleCardInfoResolver} from "@shared/resolver/single-card-info.resolver
 const routes: Routes = [
   {
     path: ':id',
+    title: 'My Tonet | Card Details',
     resolve: {card: singleCardInfoResolver},
     component: CardComponent,
   },
