@@ -7,8 +7,7 @@
     background: var(--main-container);
     padding: 1rem;
     max-width: 650px;
-    height: 500px;
-    max-height: 500px;
+    min-height: 450px;
 
     & .logo {
       height: 20vm;
@@ -21,6 +20,7 @@
     & .sub-title {
       font-size: clamp(0.875rem, 0.6985rem + 0.8824vw, 1.25rem);
       color: var(--text-secondary);
+      text-align: center;
     }
   }
 

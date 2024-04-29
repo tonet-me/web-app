@@ -4,7 +4,6 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {provideClientHydration} from '@angular/platform-browser';
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
-import {loadingInterceptor} from "@core/http/loading.interceptor";
 import {authInterceptor} from "@core/http/auth.interceptor";
 import {errorInterceptor} from "@core/http/error.interceptor";
 import {baseUrlInterceptor} from "@core/http/base-url.interceptor";
@@ -24,7 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([
       baseUrlInterceptor,
       authInterceptor,
-      loadingInterceptor,
       errorInterceptor,
       jwtRefreshInterceptor
     ])),

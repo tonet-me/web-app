@@ -5,6 +5,7 @@
   padding: clamp(1rem, 0.636rem + 1.82vw, 2rem);
   max-width: 800px;
   min-height: calc(100vh - 99px);
+  min-height: calc(100svh - 99px);
   position: relative;
   padding-bottom: 48px;
 }

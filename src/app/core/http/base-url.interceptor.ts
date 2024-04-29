@@ -7,8 +7,6 @@ export const baseUrlInterceptor: HttpInterceptorFn = (req, next) => {
       url: `${environment.apiUrl}${req.url}`,
     });
     return next(apiRequest);
-  } else {
-    return next(req);
   }
-
+  return next(req);
 };
