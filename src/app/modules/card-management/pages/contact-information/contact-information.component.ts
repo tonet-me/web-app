@@ -1,12 +1,12 @@
 import {Component, DestroyRef, OnInit} from '@angular/core';
 import {StepsService} from "@shared/services/steps.service";
 import {ContactInfoForm, EmailsForm, PhoneNumbersForm} from "@app/modules/card-management/models/card-management.model";
-import {numeric, prop, RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
-import {countryModel} from "@app/modules/settings/models/setting.model";
+import {RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
 import {FormArray} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {countryModel} from "@shared/models/location.model";
 
 @Component({
   selector: 'app-contact-information',

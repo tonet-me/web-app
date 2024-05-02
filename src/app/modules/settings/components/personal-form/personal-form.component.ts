@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {countryModel} from "@app/modules/settings/models/setting.model";
+import {countryModel} from "@shared/models/location.model";
 
 @Component({
   selector: 'app-personal-form',

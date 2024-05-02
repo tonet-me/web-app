@@ -3,11 +3,10 @@ import {RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
 import {markFormGroupTouched} from "@shared/helper/my-helper";
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {iif, map, mergeMap, of} from "rxjs";
-import {countryModel, PersonalInfoForm} from "@app/modules/settings/models/setting.model";
-import {SettingService} from "@app/modules/settings/services/setting.service";
+import {PersonalInfoForm} from "@app/modules/settings/models/setting.model";
 import {UserService} from "@shared/services/user.service";
 import {ToastrService} from "ngx-toastr";
+import {countryModel} from "@shared/models/location.model";
 
 @Component({
   selector: 'app-modify-personal-info',

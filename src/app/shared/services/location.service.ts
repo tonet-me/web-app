@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {countryModel, IpInfoModel} from "../models/setting.model";
+import {countryModel, IpInfoModel} from "..//models/location.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingService {
+export class LocationService {
 
   constructor(private http: HttpClient) {
   }
