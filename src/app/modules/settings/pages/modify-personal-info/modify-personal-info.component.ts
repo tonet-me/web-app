@@ -9,7 +9,6 @@ import {ToastrService} from "ngx-toastr";
 import {countryModel} from "@shared/models/location.model";
 
 @Component({
-  selector: 'app-modify-personal-info',
   templateUrl: './modify-personal-info.component.html',
   styleUrl: './modify-personal-info.component.scss'
 })

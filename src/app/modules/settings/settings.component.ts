@@ -4,7 +4,6 @@ import {AuthService} from "@core/auth/services/auth.service";
 import {UserService} from "@shared/services/user.service";
 
 @Component({
-  selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })

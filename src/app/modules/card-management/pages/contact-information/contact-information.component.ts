@@ -9,7 +9,6 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {countryModel} from "@shared/models/location.model";
 
 @Component({
-  selector: 'app-contact-information',
   templateUrl: './contact-information.component.html',
   styleUrl: './contact-information.component.scss'
 })

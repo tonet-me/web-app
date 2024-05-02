@@ -47,7 +47,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: AppInit,
-      deps: [ColorSchemeService, DefaultValidationService],
+      deps: [ColorSchemeService],
     },
   ]
 };

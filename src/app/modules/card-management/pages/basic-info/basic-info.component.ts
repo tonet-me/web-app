@@ -11,7 +11,6 @@ import {AsyncValidatorFn, ValidationErrors} from "@angular/forms";
 import {custom_link_regex} from "@shared/helper/my-helper";
 
 @Component({
-  selector: 'app-basic-info',
   templateUrl: './basic-info.component.html',
   styleUrl: './basic-info.component.scss'
 })

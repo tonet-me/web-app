@@ -8,7 +8,6 @@ import {CardManagementService} from "@app/modules/card-management/services/card-
 import {socialMediaList} from "@shared/models/social_media.model";
 
 @Component({
-  selector: 'app-social-media',
   templateUrl: './social-media.component.html',
   styleUrl: './social-media.component.scss'
 })

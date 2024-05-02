@@ -14,7 +14,6 @@ import {ToastrService} from "ngx-toastr";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: 'app-extra-link',
   templateUrl: './extra-link.component.html',
   styleUrl: './extra-link.component.scss'
 })
