@@ -27,7 +27,7 @@ export class BasicInfoForm {
   }
 
   @required()
-  @alphaNumeric()
+  @alphaNumeric({allowWhiteSpace: true})
   @minLength({value: 1})
   @maxLength({value: 20})
   title!: string;
