@@ -20,7 +20,7 @@ import {DOCUMENT, NgClass, NgIf} from "@angular/common";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnChanges {
-  @Input() heightSize: any = 55;
+  @Input() heightSize: string = "55";
   @Input() showModal!: boolean;
   @Input() closeable = true;
   @Input() size: 'lg' | 'md' | 'sm' = 'md';

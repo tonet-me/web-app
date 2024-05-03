@@ -1,4 +1,5 @@
 import {Directive, ElementRef, HostListener} from '@angular/core';
+import {NgControl} from "@angular/forms";
 
 @Directive({
   selector: '[appReplaceSpace]',
@@ -6,10 +7,14 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 })
 export class ReplaceSpaceDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private el: ElementRef,
+    private control: NgControl,
+  ) {
+  }
 
-  @HostListener('input', ['$event']) onInput(event: any) {
-    const inputValue: string = event.target.value;
+  @HostListener('input', ['$event']) onInput() {
+    const inputValue = this.control.value;
     this.el.nativeElement.value = inputValue.replace(/\s/g, '_');
   }
 

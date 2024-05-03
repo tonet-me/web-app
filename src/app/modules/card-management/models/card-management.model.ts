@@ -161,15 +161,29 @@ export interface cardManagementPayload {
   title: string,
   photo_url: string,
   about: string,
-  phone_numbers: {
-    title: string,
-    value: phoneNumber,
-  }[],
-  emails: EmailsForm[],
-  social_medias: {
-    type: SocialMediaEnum,
-    value: string
-  }[],
-  links: extraLink[],
+  phone_numbers: phoneNumberInterface[],
+  emails: keyValueInterface[],
+  social_medias: socialMediaInterface[],
+  links: keyValueInterface[],
   status: CardActivationEnum,
+}
+
+
+interface phoneNumberInterface {
+  title: string
+  value: {
+    prefix: string;
+    number: string;
+    country_code: string
+  }
+}
+
+interface keyValueInterface {
+  title: string;
+  value: string
+}
+
+interface socialMediaInterface {
+  type: SocialMediaEnum,
+  value: string
 }

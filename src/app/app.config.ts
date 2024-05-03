@@ -14,7 +14,6 @@ import {AppInit} from "@app/app.init";
 import {environment} from "@environments/environment";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideToastr} from "ngx-toastr";
-import {DefaultValidationService} from "@shared/services/default-validation.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,7 +26,9 @@ export const appConfig: ApplicationConfig = {
       jwtRefreshInterceptor
     ])),
     provideAnimations(), // required animations providers
-    provideToastr(), // Toastr providers
+    provideToastr({
+      progressBar: true,
+    }), // Toastr providers
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

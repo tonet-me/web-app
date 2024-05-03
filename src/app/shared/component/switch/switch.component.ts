@@ -17,8 +17,8 @@ export class SwitchComponent {
   @Input() label? :string
   @Input() status!: boolean;
   @Output() statusChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  changed(event: any) {
-    if (event.target.checked) {
+  changed(event: Event) {
+    if ((event.target as HTMLInputElement).checked) {
       this.statusChange.emit(true);
     } else {
       this.statusChange.emit(false);

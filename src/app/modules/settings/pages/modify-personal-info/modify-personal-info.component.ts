@@ -13,7 +13,7 @@ import {countryModel} from "@shared/models/location.model";
   styleUrl: './modify-personal-info.component.scss'
 })
 export class ModifyPersonalInfoComponent implements OnInit {
-  form!: any;
+  form!: RxFormGroup;
   countryList: countryModel[] = []
   userEmail!: string;
   new_user: boolean = false
@@ -49,13 +49,13 @@ export class ModifyPersonalInfoComponent implements OnInit {
     this.activatedRoute.data.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data) => {
       const res = data["countries"];
       this.countryList = res.countryList
-          if (res.ipInfo) {
-            const countrySelected = this.countryList.find(((a: any) => a.code === res.ipInfo.country))!
-            this.form.get('phone_number').patchValue({
-              prefix: countrySelected.dial_code,
-              country_code: countrySelected.code,
-            })
-          }
+      if (res.ipInfo) {
+        const countrySelected = this.countryList.find((a => a.code === res.ipInfo.country))!
+        this.form.get('phone_number')?.patchValue({
+          prefix: countrySelected.dial_code,
+          country_code: countrySelected.code,
+        })
+      }
     })
   }
 
@@ -80,7 +80,7 @@ export class ModifyPersonalInfoComponent implements OnInit {
 
   onSelectedCountry(value: string) {
     const countrySelected = this.countryList.find((a) => a.code === value)
-    this.form.get('phone_number').get('prefix').patchValue(countrySelected?.dial_code)
-    this.form.get('phone_number').get('country_code').patchValue(countrySelected?.code)
+    this.form.get('phone_number')?.get('prefix')?.patchValue(countrySelected?.dial_code)
+    this.form.get('phone_number')?.get('country_code')?.patchValue(countrySelected?.code)
   }
 }

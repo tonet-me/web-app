@@ -33,13 +33,13 @@ export class ContactInformationComponent implements OnInit {
         const res = data["countries"];
         this.countryList = res.countryList
         if (res.ipInfo) {
-          this.countrySelected = this.countryList.find(((a: any) => a.code === res.ipInfo.country))!
+          this.countrySelected = this.countryList.find((a => a.code === res.ipInfo.country))!
           this.stepService.activeStepSubject$.next(3)
           const contactInfoForm = new ContactInfoForm()
           contactInfoForm.phoneNumbers = new Array<PhoneNumbersForm>();
-          const phoneNumbersData = this.cardManagementService.cardStoreData()?.phone_numbers ?? [{}];
-          const emailsData = this.cardManagementService.cardStoreData()?.emails ?? [{}];
-          phoneNumbersData.map((res: any) => {
+          const phoneNumbersData = this.cardManagementService.cardStoreData()?.phone_numbers ?? [];
+          const emailsData = this.cardManagementService.cardStoreData()?.emails ?? [];
+          phoneNumbersData.map(res=> {
             contactInfoForm.phoneNumbers.push(new PhoneNumbersForm({
               title: res.title || '',
               number: res?.value?.number || '',
@@ -48,7 +48,7 @@ export class ContactInformationComponent implements OnInit {
             }));
           });
           contactInfoForm.emails = new Array<EmailsForm>();
-          emailsData.map((res: any) => {
+          emailsData.map(res => {
             contactInfoForm.emails.push(new EmailsForm({
               title: res.title || '',
               value: res.value || '',

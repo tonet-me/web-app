@@ -26,8 +26,8 @@ export class SocialMediaComponent implements OnInit {
     this.stepService.activeStepSubject$.next(2)
     this.socialMedia = new socialMediaForm()
     this.socialMedia.socialMedias = new Array<socialMedia>();
-    socialMediaList.map((res: any, index: number) => {
-      const existingSocialMedia = this.cardManagementService.cardStoreData()?.social_medias?.find((item: any) => item.type === res.id);
+    socialMediaList.map(res => {
+      const existingSocialMedia = this.cardManagementService.cardStoreData()?.social_medias?.find((item) => item.type === res.id);
       const title = existingSocialMedia ? existingSocialMedia.value : '';
       const active = !!existingSocialMedia;
       this.socialMedia.socialMedias.push(new socialMedia({type: res.id, name: res.name, title, active}));

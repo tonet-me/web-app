@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {countryModel} from "@shared/models/location.model";
+import {RxFormGroup} from "@rxweb/reactive-form-validators";
 
 @Component({
   selector: 'app-personal-form',
@@ -8,7 +9,7 @@ import {countryModel} from "@shared/models/location.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonalFormComponent implements OnInit {
-  @Input() form: any;
+  @Input() form!: RxFormGroup;
   @Input() countryList: countryModel[] = []
   @Input() userEmail?: string
   @Output() selectedCountryChange: EventEmitter<string> = new EventEmitter();
@@ -26,7 +27,7 @@ export class PersonalFormComponent implements OnInit {
     this.onClose.emit();
   }
 
-  onSelectedCountry(value: any) {
+  onSelectedCountry(value: string) {
     this.selectedCountryChange.emit(value)
 
   }

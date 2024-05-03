@@ -17,7 +17,7 @@
 </div>
 
 
-<app-modal [(showModal)]="_imageChangedEvent" [closeable]="false" heightSize="40">
+<app-modal [(showModal)]="!!_imageChangedEvent" [closeable]="false" heightSize="40">
   <image-cropper
     [imageChangedEvent]="_imageChangedEvent"
     [maintainAspectRatio]="true"

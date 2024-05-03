@@ -32,8 +32,7 @@ export class ContactInformationFormComponent {
     this.onSubmit.emit()
   }
 
-  onSelectedCountry(value: any) {
+  onSelectedCountry(value: string) {
     this.selectedCountryChange.emit(value)
-
   }
 }
