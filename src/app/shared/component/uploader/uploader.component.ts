@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component, DestroyRef, effect,
-  ElementRef,
   EventEmitter,
   Input,
   Output,
