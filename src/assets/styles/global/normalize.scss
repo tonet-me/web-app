@@ -162,6 +162,10 @@ input,
 optgroup,
 select,
 textarea {
+  -webkit-appearance: none; // Disable default browser styling
+  -moz-appearance: none;
+  appearance: none;
+  autocomplete: off; // Disable autocomplete
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -348,30 +352,6 @@ template {
   display: none;
 }
 
-ul{
+ul {
   list-style: none;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-animation: autofill 0s forwards;
-  animation: autofill 0s forwards;
-}
-
-@keyframes autofill {
-  100% {
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-  }
-}
-
-@-webkit-keyframes autofill {
-  100% {
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-  }
 }

@@ -31,9 +31,9 @@
         font-size: clamp(0.9rem, 0.6176rem + 1.4118vw, 1.2rem);
       }
 
-      & p {
+      & a {
         color: var(--primary-light);
-        font-size: clamp(0.8rem, 0.6176rem + 1.4118vw, 1rem);
+        font-size: clamp(0.6rem, 0.6176rem + 1.4118vw, .89rem);
       }
     }
 

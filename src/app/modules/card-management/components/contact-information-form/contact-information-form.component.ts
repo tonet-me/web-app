@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {RxFormGroup} from "@rxweb/reactive-form-validators";
 import {FormArray, FormGroup} from "@angular/forms";
 import {countryModel} from "@shared/models/location.model";
@@ -7,6 +7,7 @@ import {countryModel} from "@shared/models/location.model";
   selector: 'app-contact-information-form',
   templateUrl: './contact-information-form.component.html',
   styleUrl: './contact-information-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactInformationFormComponent {
   @Input() form!: RxFormGroup;

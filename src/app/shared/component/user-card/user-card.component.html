@@ -1,5 +1,5 @@
 <div class="user-card py-3 mb-3">
-  <div class="d-flex card-header mb-3 px-sm-4 px-3"
+  <div class="d-flex card-header mb-3 px-sm-4 px-2"
        [ngClass]="{'deactive' : card.status === CardActivationEnum.deactive}">
     <div class="card-header__img-holder me-2 me-sm-3 d-flex align-items-center justify-content-center">
       <app-inline-svg *ngIf="!card.photo_url" src="assets/icons/user.svg" fill="#fff" width="40px" height="40px"/>
@@ -8,10 +8,10 @@
     <div class="d-flex justify-content-between flex-fill">
       <div class="d-flex flex-column align-items-start justify-content-center pe-2 pe-sm-3 title">
         <h3 class="my-2">{{ card.title }}</h3>
-        <p class="my-2">{{ '@' + card.name }}</p>
+        <a class="my-2" [href]="'https://tonet.me/' + card.name " target="_blank">{{ 'tonet.me/' + card.name }}</a>
       </div>
       <div class=" d-flex flex-column align-items-end justify-content-center">
-        <div class="setting d-flex flex-column align-items-end justify-content-center">
+        <div class="setting d-flex flex-column align-items-end justify-content-center pe-2">
           <div class="d-flex align-items-center ">
             <app-switch class="pe-1" [status]="card.status === CardActivationEnum.active"
                         (statusChange)="changeCardStatus(card.id)"/>
