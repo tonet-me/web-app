@@ -2,6 +2,7 @@
 .auth {
   height: 100vh;
   height: 100svh;
+
   &__box {
     border-radius: 2rem;
     background: var(--main-container);
@@ -24,4 +25,14 @@
     }
   }
 
+  & .btn-container{
+    height: 144px;
+    & .loading {
+      &::ng-deep svg{
+        & circle{
+          fill: var(--primary);
+        }
+      }
+    }
+  }
 }

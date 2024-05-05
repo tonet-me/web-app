@@ -13,6 +13,8 @@ import {ImageCropperModule} from "ngx-image-cropper";
 import {ModalComponent} from "@shared/component/modal/modal.component";
 import {mergeMap} from "rxjs";
 import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
+import e from "express";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-uploader',
@@ -35,6 +37,7 @@ export class UploaderComponent {
   protected imageURL = signal<string>('')
 
   constructor(private uploaderService: UploaderService,
+              private toastr: ToastrService,
               private destroyRef: DestroyRef) {
     effect(() => {
       if (this.imageUrl) {
@@ -62,4 +65,13 @@ export class UploaderComponent {
     // event.blob can be used to upload the cropped image
   }
 
+  onUploadFile(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0]
+    if (file.size < 2000000) {
+      this._imageChangedEvent = event;
+      this._croppedImage = event
+    } else {
+      this.toastr.error('File Too Large: Please keep uploads under 2MB')
+    }
+  }
 }

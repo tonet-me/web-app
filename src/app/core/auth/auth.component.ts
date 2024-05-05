@@ -6,6 +6,7 @@ import {catchError, iif, map, mergeMap, of, throwError} from "rxjs";
 import {UserService} from "@shared/services/user.service";
 import {Router} from "@angular/router";
 import {UploaderService} from "@shared/services/uploader.service";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-auth',
@@ -23,6 +24,7 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
               private router: Router,
+              private socialAuthService: SocialAuthService,
               private uploaderService: UploaderService,
               private destroyRef: DestroyRef) {
   }
@@ -31,7 +33,7 @@ export class AuthComponent implements OnInit {
     if (typeof window !== "undefined") {
       this.innerWidth = window.innerWidth
     }
-    this.authService.SocialAuth$.pipe(
+    this.socialAuthService.authState.pipe(
       takeUntilDestroyed(this.destroyRef),
       mergeMap((socialUser) => {
         return this.authService.login({

@@ -15,7 +15,7 @@ import {countryModel} from "@shared/models/location.model";
 export class ModifyPersonalInfoComponent implements OnInit {
   form!: RxFormGroup;
   countryList: countryModel[] = []
-  userEmail!: string;
+  userEmail?: string;
   new_user: boolean = false
   breadCrumbData = {title: 'Personal info', description: 'Enter your personal info', backLink: '/setting'}
 
