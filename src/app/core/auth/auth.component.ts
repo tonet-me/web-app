@@ -2,7 +2,7 @@ import {Component, DestroyRef, HostListener, OnInit} from '@angular/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {AuthService} from "@core/auth/services/auth.service";
 import {SocialProviderEnum} from "@core/auth/enums/social-provider";
-import {catchError, iif, map, mergeMap, of, throwError} from "rxjs";
+import {catchError, iif, map, mergeMap, of} from "rxjs";
 import {UserService} from "@shared/services/user.service";
 import {Router} from "@angular/router";
 import {UploaderService} from "@shared/services/uploader.service";
@@ -52,7 +52,8 @@ export class AuthComponent implements OnInit {
                       })
                     )
                   }))
-                })
+                }),
+                catchError(() => of(data))
               ), of(data))
           }),
         )
