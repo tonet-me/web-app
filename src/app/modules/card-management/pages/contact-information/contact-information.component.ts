@@ -97,7 +97,10 @@ export class ContactInformationComponent implements OnInit {
     }
   }
 
-  onSelectedCountry(value: string) {
+  onSelectedCountry(event: { value: string; index: number }) {
+    const {value, index} = event
     const countrySelected = this.countryList.find((a) => a.code === value)
+    let formArray = this.form.controls['phoneNumbers'] as FormArray;
+    formArray.at(index).get('prefix')?.patchValue(countrySelected?.dial_code)
   }
 }

@@ -12,10 +12,10 @@ import {countryModel} from "@shared/models/location.model";
 export class ContactInformationFormComponent {
   @Input() form!: RxFormGroup;
   @Input() countryList: countryModel[] = []
-  @Output() selectedCountryChange: EventEmitter<string> = new EventEmitter();
+  @Output() selectedCountryChange: EventEmitter<{value: string, index: number}> = new EventEmitter();
   @Output() onSubmit: EventEmitter<string> = new EventEmitter();
   @Output() onAddFormControl: EventEmitter<'phoneNumbers' | 'emails'> = new EventEmitter();
-  @Output() onRemoveFormControl: EventEmitter<{name: 'phoneNumbers' | 'emails', index: number}> = new EventEmitter();
+  @Output() onRemoveFormControl: EventEmitter<{ name: 'phoneNumbers' | 'emails', index: number }> = new EventEmitter();
   getFormArray(name: string): FormGroup[] {
     let formArray = this.form.controls[name] as FormArray;
     return formArray.controls as FormGroup[];
@@ -24,7 +24,7 @@ export class ContactInformationFormComponent {
     this.onAddFormControl.emit(name)
   }
 
-  removeFromArray(name: 'phoneNumbers' | 'emails' , index: number) {
+  removeFromArray(name: 'phoneNumbers' | 'emails', index: number) {
     this.onRemoveFormControl.emit({name, index})
   }
 
@@ -33,7 +33,7 @@ export class ContactInformationFormComponent {
     this.onSubmit.emit()
   }
 
-  onSelectedCountry(value: string) {
-    this.selectedCountryChange.emit(value)
+  onSelectedCountry(value: string, index: number) {
+    this.selectedCountryChange.emit({value, index})
   }
 }

@@ -25,7 +25,7 @@
               <ng-select class="col-auto me-2"
                          [clearable]="false"
                          formControlName="country_code"
-                         (change)="onSelectedCountry($event)"
+                         (change)="onSelectedCountry($event , i)"
                          [searchable]="true">
                 @for (item of countryList; track item.code) {
                   <ng-option [value]="item.code">
