@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.tonet.me/v1/',
-  siteUrl: 'https://tonet.me',
+  siteUrl: 'https://tonet.me/',
   googleClientID: '603743334325-3ate4gipca08n88mnqtj9shh3nce96eh.apps.googleusercontent.com'
 };
 
