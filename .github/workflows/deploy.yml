@@ -23,7 +23,6 @@ jobs:
           script: |
             cd tonet/web-app
             git pull origin main
-            npm i
             docker compose build
             docker compose up -d
 
