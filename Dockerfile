@@ -1,15 +1,13 @@
 # Use an official Node.js image as the base image
-FROM node:18.17.0 as build
-
-ENV APP_NAME my.tonet
+FROM node:alpine as build
 # Set the working directory in the container
-WORKDIR /$APP_NAME
+WORKDIR /app
 
 # Copy package.json and package-lock.json files to the working directory
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --silent
 
 # Copy the rest of the application code
 COPY . .
