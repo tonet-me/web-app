@@ -4,8 +4,8 @@ import {BehaviorSubject} from "rxjs";
 import {StepsService} from "@shared/services/steps.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {StepModel} from "@shared/models/step.model";
-import { RouterLink, RouterLinkActive} from "@angular/router";
-import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
+import { RouterLink} from "@angular/router";
+import {AsyncPipe, NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-step-navigation',
@@ -16,9 +16,7 @@ import {AsyncPipe, NgClass, NgForOf, NgIf} from "@angular/common";
     RouterLink,
     NgIf,
     NgClass,
-    NgForOf,
     AsyncPipe,
-    RouterLinkActive
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

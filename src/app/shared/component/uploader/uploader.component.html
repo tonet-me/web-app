@@ -1,5 +1,5 @@
 <div class="uploader d-flex align-items-center justify-content-center mb-3">
-  <input type="file" #file class="d-none" name="file-input" (change)="_imageChangedEvent = $event; this._croppedImage = $event"
+  <input type="file" #file class="d-none" name="file-input" (change)="onUploadFile($event)"
          accept="image/jpeg, image/png">
   <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()" >
     @if (imageURL()) {
@@ -17,19 +17,22 @@
 </div>
 
 
-<app-modal [(showModal)]="_imageChangedEvent" [closeable]="false" heightSize="40">
+<app-modal [(showModal)]="!!_imageChangedEvent" [closeable]="false" heightSize="30">
   <image-cropper
     [imageChangedEvent]="_imageChangedEvent"
     [maintainAspectRatio]="true"
     [aspectRatio]="3 / 3"
     backgroundColor="#333"
+    format="jpeg"
     [roundCropper]="true"
-    format="png"
+    [cropperMaxWidth]="512"
+    [cropperMaxHeight]="512"
+    [imageQuality]="30"
     (imageCropped)="imageCropped($event)"
   />
 
   <div class="d-flex flex-row-reverse pt-4">
-    <button class="btn btn-primary flex-1" (click)="previewSelectedImage()">upload</button>
-    <button class="btn btn-background flex-1 me-2" (click)="_imageChangedEvent = null">cancel</button>
+    <button class="btn btn-primary flex-fill" (click)="previewSelectedImage()">upload</button>
+    <button class="btn btn-background flex-fill me-2" (click)="_imageChangedEvent = null">cancel</button>
   </div>
 </app-modal>

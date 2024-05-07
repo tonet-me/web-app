@@ -1,6 +1,6 @@
 import {Component, DestroyRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {map, mergeMap, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {CardModel} from "@shared/models/card.model";
 import {environment} from "@environments/environment";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
@@ -9,7 +9,6 @@ import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
-  selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

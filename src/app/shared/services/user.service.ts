@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {UserModel} from "@shared/models/user.model";
 import {HttpClient} from "@angular/common/http";
-import {CardModel} from "@shared/models/card.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class UserService {
     return this.http.get<{ user: UserModel }>('users/profile')
   }
 
-  updateUser(values: any): Observable<{ update_data: UserModel }> {
+  updateUser(values: Partial<UserModel>): Observable<{ update_data: UserModel }> {
     return this.http.put<{ update_data: UserModel }>('users/profile', {update_data: values})
   }
 
@@ -30,6 +29,7 @@ export class UserService {
   set userData(user: UserModel | null) {
     this._userData.next(user)
   }
+
   getUserData$(): Observable<UserModel | null> {
     return this._userData$
   }

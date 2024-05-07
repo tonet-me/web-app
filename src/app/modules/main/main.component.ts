@@ -7,7 +7,6 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {map, mergeMap} from "rxjs";
 
 @Component({
-  selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

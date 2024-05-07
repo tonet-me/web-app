@@ -162,6 +162,10 @@ input,
 optgroup,
 select,
 textarea {
+  -webkit-appearance: none; // Disable default browser styling
+  -moz-appearance: none;
+  appearance: none;
+  autocomplete: off; // Disable autocomplete
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -348,6 +352,6 @@ template {
   display: none;
 }
 
-ul{
+ul {
   list-style: none;
 }

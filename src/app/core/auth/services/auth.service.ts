@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {SocialAuthService} from "@abacritt/angularx-social-login";
 import {CookieService} from "ngx-cookie-service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
@@ -11,10 +10,8 @@ import {LoginModel, loginPayload, tokensModel} from "@core/auth/models/auth.mode
 export class AuthService {
   private _accessTokenKey: string = 'access_token';
   private _refreshTokenKey: string = 'refresh_token';
-  SocialAuth$ = this.socialAuthService.authState;
 
-  constructor(private socialAuthService: SocialAuthService,
-              private http: HttpClient,
+  constructor(private http: HttpClient,
               private cookieService: CookieService) {
   }
 
@@ -55,8 +52,7 @@ export class AuthService {
 
   logout() {
     this.cookieService.deleteAll();
-    this.socialAuthService.signOut(true).then()
     //todo change this with route later
-      window.location.href = window.location.origin  + '/auth'
+    window.location.href = window.location.origin + '/auth'
   }
 }

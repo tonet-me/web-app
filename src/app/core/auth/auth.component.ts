@@ -2,10 +2,11 @@ import {Component, DestroyRef, HostListener, OnInit} from '@angular/core';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {AuthService} from "@core/auth/services/auth.service";
 import {SocialProviderEnum} from "@core/auth/enums/social-provider";
-import {catchError, iif, map, mergeMap, of, throwError} from "rxjs";
+import {catchError, iif, map, mergeMap, of} from "rxjs";
 import {UserService} from "@shared/services/user.service";
 import {Router} from "@angular/router";
 import {UploaderService} from "@shared/services/uploader.service";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-auth',
@@ -23,6 +24,7 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
               private router: Router,
+              private socialAuthService: SocialAuthService,
               private uploaderService: UploaderService,
               private destroyRef: DestroyRef) {
   }
@@ -31,7 +33,7 @@ export class AuthComponent implements OnInit {
     if (typeof window !== "undefined") {
       this.innerWidth = window.innerWidth
     }
-    this.authService.SocialAuth$.pipe(
+    this.socialAuthService.authState.pipe(
       takeUntilDestroyed(this.destroyRef),
       mergeMap((socialUser) => {
         return this.authService.login({
@@ -50,15 +52,15 @@ export class AuthComponent implements OnInit {
                       })
                     )
                   }))
-                })
+                }),
+                catchError(() => of(data))
               ), of(data))
           }),
         )
       }),
     ).subscribe((res) => {
-      console.log(res)
       this.userService.userData = res.user
-      this.router.navigate([res.new_user ? '/setting/personal-information' : '/'], {queryParams: res.new_user ? {new_user: true} : {}}).then()
+      this.router.navigate([res.new_user ? '/setting/personal-information' : ''], {queryParams: res.new_user ? {new_user: true} : {}}).then()
     });
   }
 

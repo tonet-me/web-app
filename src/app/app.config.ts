@@ -4,7 +4,6 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {provideClientHydration} from '@angular/platform-browser';
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
-import {loadingInterceptor} from "@core/http/loading.interceptor";
 import {authInterceptor} from "@core/http/auth.interceptor";
 import {errorInterceptor} from "@core/http/error.interceptor";
 import {baseUrlInterceptor} from "@core/http/base-url.interceptor";
@@ -15,7 +14,6 @@ import {AppInit} from "@app/app.init";
 import {environment} from "@environments/environment";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {provideToastr} from "ngx-toastr";
-import {DefaultValidationService} from "@shared/services/default-validation.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,12 +22,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([
       baseUrlInterceptor,
       authInterceptor,
-      loadingInterceptor,
       errorInterceptor,
       jwtRefreshInterceptor
     ])),
     provideAnimations(), // required animations providers
-    provideToastr(), // Toastr providers
+    provideToastr({
+      progressBar: true,
+    }), // Toastr providers
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -49,7 +48,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: AppInit,
-      deps: [ColorSchemeService, DefaultValidationService],
+      deps: [ColorSchemeService],
     },
   ]
 };

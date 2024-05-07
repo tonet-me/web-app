@@ -5,7 +5,7 @@
       <div class="col-12 col-md-6" [formGroup]="item">
         <div class="social-media__item d-flex justify-content-center align-items-center flex-column p-1 cursor-pointer"
              [ngClass]="{'active': item.value.active}">
-          <div class="col-12 d-flex justify-content-center" (click)="toggle(item , inputField)">
+          <div class="col-12 mt-1 d-flex justify-content-center" (click)="toggle(item , inputField)">
             <img class="mb-2" src="assets/social-media/{{item.value.name}}.svg"/>
           </div>
           <div class="col-12" [hidden]="!item.value.active">

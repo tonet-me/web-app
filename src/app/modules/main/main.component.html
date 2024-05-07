@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between align-items-center mb-4 pb-4 user-profile-section">
     <div class="d-flex align-items-center">
       <div class="image-holder d-flex align-items-center justify-content-center me-md-4 me-2">
-        <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg"/>
+        <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg" fill="#fff"/>
         <img *ngIf="O.user!.profile_photo_url" [src]="O.user!.profile_photo_url | getImageUrl : 'user'" alt="user-profile"/>
       </div>
       <div class="main__title">
@@ -10,8 +10,8 @@
         <h3>Welcome back</h3>
       </div>
     </div>
-    <div class="cursor-pointer btn-container" routerLink="setting">
-      <app-inline-svg src="assets/icons/setting.svg" width="45px" height="45px" fill="var(--text)"/>
+    <div class="cursor-pointer setting-icon" routerLink="setting">
+      <app-inline-svg src="assets/icons/setting.svg" fill="var(--text)"/>
     </div>
   </div>
   <div class="main__card-container">

@@ -3,6 +3,7 @@ import {AuthComponent} from "./auth.component";
 import {AuthRoutingModule} from "./auth-routing.module";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
+import {InlineSvgComponent} from "@shared/component/inline-svg/inline-svg.component";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
     AuthRoutingModule,
     GoogleSigninButtonModule,
     NgOptimizedImage,
+    InlineSvgComponent,
   ],
 })
 export class AuthModule { }

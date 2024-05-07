@@ -14,7 +14,6 @@ import {ToastrService} from "ngx-toastr";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: 'app-extra-link',
   templateUrl: './extra-link.component.html',
   styleUrl: './extra-link.component.scss'
 })
@@ -36,10 +35,10 @@ export class ExtraLinkComponent implements OnInit {
     this.cardId = this.activeRote.parent?.snapshot.params!['id']
     this.submitBtnText = this.cardId ? 'Confirm and Modify Card' : 'Confirm and Create Card'
     this.stepService.activeStepSubject$.next(4)
-    const extraLinkData = this.cardManagementService.cardStoreData()?.links ?? [{}];
+    const extraLinkData = this.cardManagementService.cardStoreData()?.links ?? [];
     const extraLinkForm = new ExtraLinkForm()
     extraLinkForm.extraLinks = new Array<extraLink>();
-    extraLinkData.map((res: any) => {
+    extraLinkData.map(res => {
       extraLinkForm.extraLinks.push(new extraLink({
         title: res.title || '',
         value: res.value || ''

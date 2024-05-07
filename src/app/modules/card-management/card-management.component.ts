@@ -1,12 +1,11 @@
 import {Component, DestroyRef, OnDestroy, OnInit} from '@angular/core';
 import {StepModel} from "@shared/models/step.model";
-import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
+import {CardManagementService} from "./services/card-management.service";
 import {ActivatedRoute} from "@angular/router";
 import {map} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: 'app-card-management',
   templateUrl: './card-management.component.html',
   styleUrl: './card-management.component.scss'
 })

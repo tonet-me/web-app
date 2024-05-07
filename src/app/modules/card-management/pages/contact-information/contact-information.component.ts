@@ -1,15 +1,14 @@
 import {Component, DestroyRef, OnInit} from '@angular/core';
 import {StepsService} from "@shared/services/steps.service";
 import {ContactInfoForm, EmailsForm, PhoneNumbersForm} from "@app/modules/card-management/models/card-management.model";
-import {numeric, prop, RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
-import {countryModel} from "@app/modules/settings/models/setting.model";
+import {RxFormBuilder, RxFormGroup} from "@rxweb/reactive-form-validators";
 import {FormArray} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CardManagementService} from "@app/modules/card-management/services/card-management.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {countryModel} from "@shared/models/location.model";
 
 @Component({
-  selector: 'app-contact-information',
   templateUrl: './contact-information.component.html',
   styleUrl: './contact-information.component.scss'
 })
@@ -34,13 +33,13 @@ export class ContactInformationComponent implements OnInit {
         const res = data["countries"];
         this.countryList = res.countryList
         if (res.ipInfo) {
-          this.countrySelected = this.countryList.find(((a: any) => a.code === res.ipInfo.country))!
+          this.countrySelected = this.countryList.find((a => a.code === res.ipInfo.country))!
           this.stepService.activeStepSubject$.next(3)
           const contactInfoForm = new ContactInfoForm()
           contactInfoForm.phoneNumbers = new Array<PhoneNumbersForm>();
-          const phoneNumbersData = this.cardManagementService.cardStoreData()?.phone_numbers ?? [{}];
-          const emailsData = this.cardManagementService.cardStoreData()?.emails ?? [{}];
-          phoneNumbersData.map((res: any) => {
+          const phoneNumbersData = this.cardManagementService.cardStoreData()?.phone_numbers ?? [];
+          const emailsData = this.cardManagementService.cardStoreData()?.emails ?? [];
+          phoneNumbersData.map(res=> {
             contactInfoForm.phoneNumbers.push(new PhoneNumbersForm({
               title: res.title || '',
               number: res?.value?.number || '',
@@ -49,7 +48,7 @@ export class ContactInformationComponent implements OnInit {
             }));
           });
           contactInfoForm.emails = new Array<EmailsForm>();
-          emailsData.map((res: any) => {
+          emailsData.map(res => {
             contactInfoForm.emails.push(new EmailsForm({
               title: res.title || '',
               value: res.value || '',
@@ -98,7 +97,10 @@ export class ContactInformationComponent implements OnInit {
     }
   }
 
-  onSelectedCountry(value: string) {
+  onSelectedCountry(event: { value: string; index: number }) {
+    const {value, index} = event
     const countrySelected = this.countryList.find((a) => a.code === value)
+    let formArray = this.form.controls['phoneNumbers'] as FormArray;
+    formArray.at(index).get('prefix')?.patchValue(countrySelected?.dial_code)
   }
 }
