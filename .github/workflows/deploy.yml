@@ -33,5 +33,5 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             cd tonet/web-app
-            docker-compose pull
-            docker-compose up -d
+            docker compose pull
+            docker compose up -d
