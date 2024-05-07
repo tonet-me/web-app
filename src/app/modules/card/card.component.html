@@ -21,7 +21,7 @@
       <div class="col-md-6 col-12 field">
         <div class="key">Card Link</div>
         <div class="value d-flex align-items-center">
-          <a class="value" [href]="environment.siteUrl+ '/' + card.name ">{{ environment.siteUrl }}/{{ card.name }}</a>
+          <a class="value" [href]="environment.siteUrl+ card.name ">{{ environment.siteUrl }}{{ card.name }}</a>
         </div>
       </div>
       <div class="col-md-6 col-12 field d-flex flex-column justify-content-center">
