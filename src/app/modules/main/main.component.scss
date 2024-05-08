@@ -6,6 +6,7 @@
   }
 
   & .image-holder {
+    position: relative;
     @include image-holder();
   }
 

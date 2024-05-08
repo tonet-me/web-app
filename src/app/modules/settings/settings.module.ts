@@ -21,21 +21,22 @@ import {ImageCropperModule} from "ngx-image-cropper";
 
 @NgModule({
   declarations: [SettingsComponent, ModifyPersonalInfoComponent, PersonalFormComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RxReactiveFormsModule,
-    SettingsRoutingModule,
-    BreadcrumbComponent,
-    SwitchComponent,
-    InlineSvgComponent,
-    UploaderComponent,
-    NgSelectModule,
-    GetImageUrlPipe,
-    FormSubmitDirective,
-    InputDirective,
-    ImageCropperModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RxReactiveFormsModule,
+        SettingsRoutingModule,
+        BreadcrumbComponent,
+        SwitchComponent,
+        InlineSvgComponent,
+        UploaderComponent,
+        NgSelectModule,
+        GetImageUrlPipe,
+        FormSubmitDirective,
+        InputDirective,
+        ImageCropperModule,
+        NgOptimizedImage
+    ]
 })
 export class SettingsModule {
 }
