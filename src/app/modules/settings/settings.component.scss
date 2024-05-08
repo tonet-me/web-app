@@ -2,6 +2,7 @@
 @import "src/assets/styles/mixins/info-box.scss";
 .setting{
   .image-holder{
+    position: relative;
    @include image-holder()
   }
   .info-box{

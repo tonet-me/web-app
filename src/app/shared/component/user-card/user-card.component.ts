@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
 import {ConfirmModalComponent} from "@shared/component/confirm-modal/confirm-modal.component";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {environment} from "@environments/environment";
-import {DatePipe, NgClass, NgIf} from "@angular/common";
+import {DatePipe, NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
 import {InlineSvgComponent} from "@shared/component/inline-svg/inline-svg.component";
 import {QRCodeModule} from "angularx-qrcode";
@@ -23,7 +23,8 @@ import {ClickOutsideDirective} from "@shared/directives/click-outside.directive"
     QRCodeModule,
     SwitchComponent,
     NgClass,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    NgOptimizedImage
   ],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',

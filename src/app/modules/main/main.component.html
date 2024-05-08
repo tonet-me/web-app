@@ -3,7 +3,8 @@
     <div class="d-flex align-items-center">
       <div class="image-holder d-flex align-items-center justify-content-center me-md-4 me-2">
         <app-inline-svg *ngIf="!O.user!.profile_photo_url" src="assets/icons/user.svg" fill="#fff"/>
-        <img *ngIf="O.user!.profile_photo_url" [src]="O.user!.profile_photo_url | getImageUrl : 'user'" alt="user-profile"/>
+        <img *ngIf="O.user!.profile_photo_url" [ngSrc]="O.user!.profile_photo_url | getImageUrl : 'user'"
+             alt="user-profile" fill priority title="user profile"/>
       </div>
       <div class="main__title">
         <h2>{{ O.user!.first_name |titlecase }} {{ O.user!.last_name |titlecase }}</h2>
@@ -31,11 +32,12 @@
     }
 
     @for (item of O.cards; track item.id) {
-      <app-user-card [card]="item" (onChangeCardStatus)="onChangeCardStatus(item)" (onDeleteCard)="onDeleteCard($event)"/>
+      <app-user-card [card]="item" (onChangeCardStatus)="onChangeCardStatus(item)"
+                     (onDeleteCard)="onDeleteCard($event)"/>
     } @empty {
       <div class="d-flex flex-column align-items-center py-4">
-        <div class="empty-box d-flex flex-column align-items-center">
-          <img class="mb-2" src="assets/images/card.png" alt="not-found-user-card">
+        <div class="empty-box d-flex flex-column align-items-center p-3">
+          <img class="mb-2" src="assets/images/card.png" alt="not-found-user-card" title="not-found-user-card">
           <p class="my-4">Currently, you don't have any cards.</p>
           <button class="btn btn-primary btn-full" routerLink="card-management">
             <app-inline-svg src="assets/icons/add-circle.svg" width="20" height="20" fill="#fff"/>

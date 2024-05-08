@@ -146,6 +146,11 @@ sup {
  */
 
 img {
+  &[alt] {
+    /* Your styles here */
+    color: transparent;
+  }
+
   border-style: none;
 }
 
