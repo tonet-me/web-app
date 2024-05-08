@@ -51,7 +51,7 @@ $slider-height: $ball-height + $offset;
   box-sizing: content-box;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
 
   .switch-label:before {
     display: none;
@@ -117,10 +117,10 @@ $slider-height: $ball-height + $offset;
 }
 
 
-@media screen and (max-width: 425px) {
-  $ball-width: 22px;
-  $ball-height: 22px;
-  $slider-width: 60px;
+@media screen and (max-width: 500px) {
+  $ball-width: 20px;
+  $ball-height: 20px;
+  $slider-width: 55px;
   $slider-height: $ball-height + $offset;
   .switch {
     width: $slider-width;

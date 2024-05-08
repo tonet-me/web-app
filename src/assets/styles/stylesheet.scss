@@ -8,6 +8,7 @@
 
 body {
   background: var(--main-background);
+  overscroll-behavior-x: none;
 }
 
 *, body, div, span, ul, li, ol, p, a, input {
