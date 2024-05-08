@@ -7,6 +7,7 @@ import {PersonalInfoForm} from "@app/modules/settings/models/setting.model";
 import {UserService} from "@shared/services/user.service";
 import {ToastrService} from "ngx-toastr";
 import {countryModel} from "@shared/models/location.model";
+import {filter, map} from "rxjs";
 
 @Component({
   templateUrl: './modify-personal-info.component.html',
@@ -46,9 +47,15 @@ export class ModifyPersonalInfoComponent implements OnInit {
     const form = new PersonalInfoForm(this.userService.userData.value!);
     this.userEmail = this.userService.userData.value!.email
     this.form = this._fb.formGroup(form) as RxFormGroup;
-    this.activatedRoute.data.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data) => {
-      const res = data["countries"];
-      this.countryList = res.countryList
+    this.activatedRoute.data.pipe(
+      takeUntilDestroyed(this.destroyRef),
+      map((data) => {
+        const res = data["countries"];
+        this.countryList = res.countryList
+        return res
+      }),
+      filter(() => !this.userService.userData.value?.phone_number.country_code)
+    ).subscribe((res) => {
       if (res.ipInfo) {
         const countrySelected = this.countryList.find((a => a.code === res.ipInfo.country))!
         this.form.get('phone_number')?.patchValue({
