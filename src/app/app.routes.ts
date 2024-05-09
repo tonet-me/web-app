@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
-import {C404Component} from "@shared/component/c404/c404.component";
 import {AuthGuard} from "@core/auth/guards/auth.guard";
 import {UnauthenticatedGuard} from "@core/auth/guards/unauthenticated.guard";
+import {C404Component} from "@shared/component/c404/c404.component";
 
 export const routes: Routes = [
   {
