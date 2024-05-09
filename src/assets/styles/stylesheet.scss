@@ -8,7 +8,10 @@
 
 body {
   background: var(--main-background);
-  overflow-x: hidden;
+}
+
+body #g_a11y_announcement {
+  display: none;
 }
 
 *, body, div, span, ul, li, ol, p, a, input {
