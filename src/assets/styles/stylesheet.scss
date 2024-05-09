@@ -8,7 +8,7 @@
 
 body {
   background: var(--main-background);
-  overscroll-behavior-x: none;
+  overflow-x: hidden;
 }
 
 *, body, div, span, ul, li, ol, p, a, input {
