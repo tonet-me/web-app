@@ -30,13 +30,19 @@
     height: 22px;
   }
 
-  & span {
+  & a {
     font-size: clamp(.8rem, 0.8235rem + 0.8824vw, 1rem);
+    transition: .3s;
+
+    &:hover {
+      color: var(--primary-light);
+      transition: .3s;
+    }
   }
 
   &__title {
-    font-weight: lighter;
-    font-size: clamp(.8rem, 0.8235rem + 0.8824vw, 1rem);
+    font-weight: normal;
+    font-size: clamp(.7rem, 0.8235rem + 0.8824vw, .9rem);
     color: var(--primary-light);
   }
 }
@@ -49,7 +55,7 @@ qrcode::ng-deep .qrcode {
 }
 
 
-.empty-text{
+.empty-text {
   font-size: clamp(0.9rem, 0.7059rem + 0.4706vw, 1rem);
   text-align: center;
   line-height: 1.5;
