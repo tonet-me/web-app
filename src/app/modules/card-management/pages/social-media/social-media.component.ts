@@ -33,19 +33,32 @@ export class SocialMediaComponent implements OnInit {
       this.socialMedia.socialMedias.push(new socialMedia({type: res.id, name: res.name, title, active}));
     });
     this.socialMediaFormGroup = <RxFormGroup>this._fb.formGroup(this.socialMedia);
+    if (this.cardManagementService.cardStoreData()?.social_medias?.length! > 0) {
+      let formArray = this.socialMediaFormGroup.controls['socialMedias'] as FormArray;
+      (formArray.controls as RxFormGroup[]).map(
+        (form) => {
+          if (form.get('active')?.value) {
+            this.setSocialMediaValidation(form)
+          }
+        }
+      );
+    }
   }
 
   toggle({item, inputField}: { item: RxFormGroup, inputField: HTMLInputElement }) {
-    if (!item.value.active) {
-      item.get('title')!.setValidators([RxwebValidators.required(), RxwebValidators.url()])
-      item.get('active')?.patchValue(true)
-    } else {
-      item.get('title')!.clearValidators()
-      item.get('active')?.patchValue(false)
-    }
+    !item.value.active ? this.setSocialMediaValidation(item) : this.clearSocialMediaValidation(item)
     item.get('title')!.updateValueAndValidity()
     setTimeout(() => inputField.focus())
+  }
 
+  private setSocialMediaValidation(item: RxFormGroup) {
+    item.get('title')!.setValidators([RxwebValidators.required(), RxwebValidators.url()])
+    item.get('active')?.patchValue(true)
+  }
+
+  private clearSocialMediaValidation(item: RxFormGroup) {
+    item.get('title')!.clearValidators()
+    item.get('active')?.patchValue(false)
   }
 
   submit() {

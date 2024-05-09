@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormArray} from "@angular/forms";
 import {RxFormGroup} from "@rxweb/reactive-form-validators";
 
 @Component({
@@ -24,8 +23,4 @@ export class SocialMediaFormComponent {
     this.socialMediaToggled.emit({item, inputField})
   }
 
-  protected getFormArray() {
-    let formArray = this.form.controls['socialMedias'] as FormArray;
-    return formArray.controls as RxFormGroup[];
-  }
 }

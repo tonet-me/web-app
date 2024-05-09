@@ -1,7 +1,7 @@
 <form class="social-media pt-2" appFormSubmit [formGroup]="form" (ngSubmit)="submit()">
   <h3 class="title">Select Your Preferred Social Media and Add Your Link</h3>
   <div class="row">
-    @for (item of getFormArray(); track item.value.id) {
+    @for (item of this.form | formArray: 'socialMedias'; track item.value.id) {
       <div class="col-12 col-md-6" [formGroup]="item">
         <div class="social-media__item d-flex justify-content-center align-items-center flex-column p-1 cursor-pointer"
              [ngClass]="{'active': item.value.active}">

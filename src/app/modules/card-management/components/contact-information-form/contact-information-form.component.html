@@ -6,7 +6,7 @@
 
 
   <div class="row " formArrayName="phoneNumbers">
-    @for (item of getFormArray('phoneNumbers'); track i; let i = $index) {
+    @for (item of form | formArray: 'phoneNumbers'; track i; let i = $index) {
       <ng-container [formGroupName]="i">
         <div class="col-md-4 col-12 mb-4">
           <div class="form-field">
@@ -54,7 +54,7 @@
     <h3>Emails</h3>
   </div>
   <div class="row" formArrayName="emails">
-    @for (item of getFormArray('emails'); track item.controls['value'].value; let i = $index) {
+    @for (item of form | formArray:'emails'; track item.controls['value'].value; let i = $index) {
       <ng-container [formGroupName]="i">
         <div class="col-md-4 col-12 mb-4">
           <div class="form-field">

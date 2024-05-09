@@ -15,11 +15,6 @@ export class ExtraLinkFormComponent {
   @Output() onAddFormControl: EventEmitter<void> = new EventEmitter();
   @Output() onRemoveFormControl: EventEmitter<number> = new EventEmitter();
 
-  getFormArray(): FormGroup[] {
-    let formArray = this.form.controls['extraLinks'] as FormArray;
-    return formArray.controls as FormGroup[];
-  }
-
   addToForm() {
     this.onAddFormControl.emit()
   }
@@ -27,7 +22,6 @@ export class ExtraLinkFormComponent {
   removeFromArray(index: number) {
     this.onRemoveFormControl.emit(index)
   }
-
 
   submit() {
     this.onSubmit.emit()
