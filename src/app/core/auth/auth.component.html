@@ -6,20 +6,10 @@
     <div class="py-5 btn-container">
       @defer{
         <asl-google-signin-button
-          *ngIf="innerWidth > 550"
           theme="outline"
           text="continue_with"
           type="standard"
-          [width]="400"
-          shape="circle"
-          size="large"
-        ></asl-google-signin-button>
-        <asl-google-signin-button
-          *ngIf="innerWidth < 550"
-          theme="outline"
-          text="continue_with"
-          type="standard"
-          [width]="280"
+          [width]="300"
           shape="circle"
           size="large"
         ></asl-google-signin-button>
