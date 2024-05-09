@@ -33,35 +33,6 @@ export class AuthComponent implements OnInit {
     if (typeof window !== "undefined") {
       this.innerWidth = window.innerWidth
     }
-    this.socialAuthService.authState.pipe(
-      takeUntilDestroyed(this.destroyRef),
-      mergeMap((socialUser) => {
-        return this.authService.login({
-          provider_id: SocialProviderEnum.Google,
-          token: socialUser.idToken
-        }).pipe(
-          mergeMap((data) => {
-            this.authService.setTokens(data.tokens)
-            return iif(() => data.new_user,
-              this.uploaderService.getFileFromUrl(socialUser.photoUrl.split('=s')[0].concat('=s400-c')).pipe(
-                mergeMap((file) => {
-                  return this.uploaderService.uploadImage(file, 'user').pipe(mergeMap((res) => {
-                    return this.userService.updateUser({profile_photo_url: res["file-name"]}).pipe(
-                      map(() => {
-                        return {...data, user: {...data.user, profile_photo_url: res["file-name"]}}
-                      })
-                    )
-                  }))
-                }),
-                catchError(() => of(data))
-              ), of(data))
-          }),
-        )
-      }),
-    ).subscribe((res) => {
-      this.userService.userData = res.user
-      this.router.navigate([res.new_user ? '/setting/personal-information' : ''], {queryParams: res.new_user ? {new_user: true} : {}}).then()
-    });
   }
 
 
