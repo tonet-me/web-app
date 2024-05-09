@@ -26,7 +26,7 @@ import {InlineSvgComponent} from "@shared/component/inline-svg/inline-svg.compon
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormPrefixDirective} from "@shared/directives/form-prefix.directive";
 import {ReplaceSpaceDirective} from "@shared/directives/replace-space.directive";
-import {FormArrayPipe} from "@shared/pipes/formArray.pipe";
+import {FormArrayPipe} from "@app/modules/card-management/pipes/formArray.pipe";
 
 
 @NgModule({
