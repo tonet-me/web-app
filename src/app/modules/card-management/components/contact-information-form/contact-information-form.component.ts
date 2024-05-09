@@ -16,10 +16,6 @@ export class ContactInformationFormComponent {
   @Output() onSubmit: EventEmitter<string> = new EventEmitter();
   @Output() onAddFormControl: EventEmitter<'phoneNumbers' | 'emails'> = new EventEmitter();
   @Output() onRemoveFormControl: EventEmitter<{ name: 'phoneNumbers' | 'emails', index: number }> = new EventEmitter();
-  getFormArray(name: string): FormGroup[] {
-    let formArray = this.form.controls[name] as FormArray;
-    return formArray.controls as FormGroup[];
-  }
   addToForm(name: 'phoneNumbers' | 'emails') {
     this.onAddFormControl.emit(name)
   }
