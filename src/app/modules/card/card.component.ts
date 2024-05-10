@@ -36,10 +36,7 @@ export class CardComponent implements OnInit {
     }
     this.cardService.changeStatusCard(item.status, item.id).pipe(
       takeUntilDestroyed(this.destroyRef),
-    ).subscribe(
-      () => {
-      }
-    )
+    ).subscribe()
   }
 
   onDeletedCard(id: string) {

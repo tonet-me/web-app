@@ -32,7 +32,7 @@ import {ClickOutsideDirective} from "@shared/directives/click-outside.directive"
 })
 export class UserCardComponent {
   @Input() card!: CardModel
-  @Input() showSecondRow: boolean = true;
+  @Input() showAnalyze: boolean = true;
   @Input() btnPermission?: { detail: boolean; edit: boolean; delete: boolean } = {detail: true, edit: true, delete: true}
   @Output() onChangeCardStatus: EventEmitter<string> = new EventEmitter()
   @Output() onDeleteCard: EventEmitter<string> = new EventEmitter();
@@ -43,8 +43,8 @@ export class UserCardComponent {
   constructor(private router: Router) {
   }
 
-  changeCardStatus(cardId: string) {
-    this.onChangeCardStatus.emit(cardId)
+  changeCardStatus() {
+    this.onChangeCardStatus.emit()
   }
 
 

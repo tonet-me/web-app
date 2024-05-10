@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {CardManagementComponent} from "./card-management.component";
 import {CardManagementRoutingModule} from "./card-management-routing.module";
 import {BreadcrumbComponent} from "@shared/component/breadcrumb/breadcrumb.component";
@@ -41,23 +41,24 @@ import {FormArrayPipe} from "@app/modules/card-management/pipes/formArray.pipe";
     ExtraLinkComponent,
     ExtraLinkFormComponent
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        RxReactiveFormsModule,
-        CardManagementRoutingModule,
-        BreadcrumbComponent,
-        StepNavigationComponent,
-        FormSubmitDirective,
-        UploaderComponent,
-        InputDirective,
-        SwitchComponent,
-        InlineSvgComponent,
-        NgSelectModule,
-        FormPrefixDirective,
-        ReplaceSpaceDirective,
-        FormArrayPipe,
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RxReactiveFormsModule,
+    CardManagementRoutingModule,
+    BreadcrumbComponent,
+    StepNavigationComponent,
+    FormSubmitDirective,
+    UploaderComponent,
+    InputDirective,
+    SwitchComponent,
+    InlineSvgComponent,
+    NgSelectModule,
+    FormPrefixDirective,
+    ReplaceSpaceDirective,
+    FormArrayPipe,
+    NgOptimizedImage,
+  ]
 })
 export class CardManagementModule {
 }

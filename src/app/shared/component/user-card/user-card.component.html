@@ -14,7 +14,7 @@
         <div class="setting d-flex flex-column align-items-end justify-content-center pe-2">
           <div class="d-flex align-items-center ">
             <app-switch class="pe-1" [status]="card.status === CardActivationEnum.active"
-                        (statusChange)="changeCardStatus(card.id)"/>
+                        (statusChange)="changeCardStatus()" />
             <div class="more">
               <app-inline-svg class="more-icon cursor-pointer" src="assets/icons/more.svg" fill="var(--text)"
                               width="25px"
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showSecondRow">
+  <div *ngIf="showAnalyze">
     <div
       class="d-flex justify-content-center align-items-center justify-content-sm-start flex-sm-row flex-column-reverse pt-3">
       <qrcode [qrdata]="environment.siteUrl + card.name"
