@@ -2,8 +2,11 @@
   <div class="d-flex card-header mb-3 px-sm-4 px-2"
        [ngClass]="{'deactive' : card.status === CardActivationEnum.deactive}">
     <div class="card-header__img-holder me-2 me-sm-3 d-flex align-items-center justify-content-center">
-      <app-inline-svg *ngIf="!card.photo_url" src="assets/icons/user.svg" fill="#fff" width="40px" height="40px"/>
-      <img *ngIf="card.photo_url" [ngSrc]="card.photo_url | getImageUrl :'card'" [alt]="card.name + 'image'" fill priority />
+      @if (card.photo_url) {
+        <img [ngSrc]="card.photo_url | getImageUrl :'card'" [alt]="card.name + 'image'" fill priority/>
+      } @else {
+        <app-inline-svg src="assets/icons/user.svg" fill="#fff" width="40px" height="40px"/>
+      }
     </div>
     <div class="d-flex justify-content-between flex-fill">
       <div class="d-flex flex-column align-items-start justify-content-center pe-2 pe-sm-3 title">
@@ -14,7 +17,7 @@
         <div class="setting d-flex flex-column align-items-end justify-content-center pe-2">
           <div class="d-flex align-items-center ">
             <app-switch class="pe-1" [status]="card.status === CardActivationEnum.active"
-                        (statusChange)="changeCardStatus()" />
+                        (statusChange)="changeCardStatus()"/>
             <div class="more">
               <app-inline-svg class="more-icon cursor-pointer" src="assets/icons/more.svg" fill="var(--text)"
                               width="25px"

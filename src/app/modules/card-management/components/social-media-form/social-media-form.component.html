@@ -7,7 +7,7 @@
              [ngClass]="{'active': item.value.active}">
           <div class="col-12 mt-1 d-flex justify-content-center" (click)="toggle(item , inputField)">
             <img alt="{{item.value.name}}-icon" title="{{item.value.name}}" class="mb-2"
-                 ngSrc="assets/social-media/{{item.value.name}}.svg" width="45" height="45" priority/>
+                 ngSrc="assets/social-media/{{item.value.name}}.svg" width="45" height="45"/>
           </div>
           <div class="col-12" [hidden]="!item.value.active">
             <div class="form-field">
