@@ -1,9 +1,9 @@
 <div class="uploader d-flex align-items-center justify-content-center mb-3">
   <input type="file" #file class="d-none" name="file-input" (change)="onUploadFile($event)"
          accept="image/jpeg, image/png">
-  <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()" >
+  <div class="image-holder d-flex align-items-center justify-content-center" (click)="file.click()">
     @if (imageURL()) {
-      <img [src]="imageURL()">
+      <img [ngSrc]="imageURL()" priority fill alt="user-avatar"/>
     } @else {
       <app-inline-svg src="assets/icons/user.svg" width="100px" height="100px" fill="#fff"/>
     }
@@ -25,9 +25,7 @@
     backgroundColor="#333"
     format="jpeg"
     [roundCropper]="true"
-    [cropperMaxWidth]="512"
-    [cropperMaxHeight]="512"
-    [imageQuality]="30"
+    [imageQuality]="25"
     (imageCropped)="imageCropped($event)"
   />
 

@@ -6,7 +6,7 @@
   />
   <app-user-card
     [btnPermission]="{delete: true , edit: true , detail: false}"
-    [card]="card" [showSecondRow]="false" (onChangeCardStatus)="onChangeStatus(card)"
+    [card]="card" [showAnalyze]="false" (onChangeCardStatus)="onChangeStatus(card)"
     (onDeleteCard)="onDeletedCard($event)"/>
 
   <div class="info-box">
@@ -48,8 +48,9 @@
       @for (item of card.social_medias; track item.type) {
         <a [href]="item.value" target="_blank"
            class="social-media cursor-pointer">
-          <img src="assets/social-media/{{item.type | socialMediaName}}.svg"
-               alt="{{item.type | socialMediaName}}-social-media"/></a>
+          <img ngSrc="assets/social-media/{{item.type | socialMediaName}}.svg"
+               alt="{{item.type | socialMediaName}}-social-media" title="{{item.type | socialMediaName}}" width="45"
+               height="45"/></a>
       } @empty {
         <div class=" d-flex flex-column justify-content-center align-items-center p-2">
           <app-inline-svg class="pb-2" src="assets/icons/heart-circle.svg" fill="var(--text)" width="50px"

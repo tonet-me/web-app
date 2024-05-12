@@ -15,6 +15,7 @@ import {mergeMap} from "rxjs";
 import {GetImageUrlPipe} from "@shared/pipes/get-image-url.pipe";
 import e from "express";
 import {ToastrService} from "ngx-toastr";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-uploader',
@@ -22,7 +23,8 @@ import {ToastrService} from "ngx-toastr";
   imports: [
     InlineSvgComponent,
     ImageCropperModule,
-    ModalComponent
+    ModalComponent,
+    NgOptimizedImage
   ],
   templateUrl: './uploader.component.html',
   styleUrl: './uploader.component.scss',

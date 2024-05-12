@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {CardComponent} from "@app/modules/card/card.component";
 import {CardRoutingModule} from "@app/modules/card/card-routing.module";
 import {BreadcrumbComponent} from "@shared/component/breadcrumb/breadcrumb.component";
@@ -16,15 +16,16 @@ import {QRCodeModule} from "angularx-qrcode";
     exports: [
         CardComponent
     ],
-  imports: [
-    CommonModule,
-    CardRoutingModule,
-    BreadcrumbComponent,
-    GetImageUrlPipe,
-    InlineSvgComponent,
-    UserCardComponent,
-    SocialMediaNamePipe,
-    QRCodeModule,
-  ]
+    imports: [
+        CommonModule,
+        CardRoutingModule,
+        BreadcrumbComponent,
+        GetImageUrlPipe,
+        InlineSvgComponent,
+        UserCardComponent,
+        SocialMediaNamePipe,
+        QRCodeModule,
+        NgOptimizedImage,
+    ]
 })
 export class CardModule { }
