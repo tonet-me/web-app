@@ -5,6 +5,8 @@ import {CardModel} from "@shared/models/card.model";
 import {CardService} from "@shared/services/card.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {map, mergeMap} from "rxjs";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   templateUrl: './main.component.html',
@@ -13,6 +15,8 @@ import {map, mergeMap} from "rxjs";
 export class MainComponent implements OnInit {
   constructor(protected userService: UserService,
               protected cardService: CardService,
+              private router: Router,
+              private toast: ToastrService,
               private destroyRef: DestroyRef) {
   }
 
@@ -45,5 +49,14 @@ export class MainComponent implements OnInit {
         })
       )),
     ).subscribe()
+  }
+
+  onAddCard(cardLength: number) {
+    if (cardLength < 5) {
+      this.router.navigate(['card-management']).then()
+    } else {
+      this.toast.error('Maximum card limit reached: 5 cards per user')
+    }
+
   }
 }

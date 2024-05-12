@@ -10,7 +10,6 @@ import {
   url
 } from "@rxweb/reactive-form-validators";
 import {SocialMediaEnum} from "@shared/enums/social-media.enum";
-import {phoneNumber} from "@app/modules/settings/models/setting.model";
 import {CardActivationEnum} from "@shared/enums/card-activation.enum";
 import {custom_link_regex} from "@shared/helper/my-helper";
 
@@ -27,7 +26,6 @@ export class BasicInfoForm {
   }
 
   @required()
-  @alphaNumeric({allowWhiteSpace: true})
   @minLength({value: 1})
   @maxLength({value: 20})
   title!: string;

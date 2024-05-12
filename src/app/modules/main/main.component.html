@@ -26,7 +26,7 @@
             <app-inline-svg class="me-2" src="assets/icons/cards.svg" fill="var(--text)" width="30px" height="30px"/>
             <h3 class="m-0">Cards</h3>
           </div>
-          <button class="btn btn-primary" routerLink="card-management">
+          <button class="btn btn-primary" (click)="onAddCard(O.cards!.length)">
             <app-inline-svg src="assets/icons/add-circle.svg" width="20" height="20" fill="#fff"/>
             Add Card
           </button>
